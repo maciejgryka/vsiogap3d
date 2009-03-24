@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menuZoomIn">Zoom In</string>
+    <string name="app_name">vsiogap3d</string>
+<string name="menuZoomOut">Zoom Out</string>
+</resources>
