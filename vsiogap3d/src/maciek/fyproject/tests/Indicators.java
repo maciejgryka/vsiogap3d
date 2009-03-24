@@ -17,7 +17,7 @@ public class Indicators {
 		DataHandler dh = new DataHandler(context);
 		mTextureNames = textureNames;
 		
-		dh.readMeasurementData(R.xml.sensorinverted);
+		dh.readMeasurementData(R.xml.sensor);
 		dh.readIndicatorData(R.xml.indicators);
 		
 		// TODO: would be much faster to check if XML exists (and is valid) before writing to the database!
