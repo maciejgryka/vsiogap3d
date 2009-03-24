@@ -14,6 +14,8 @@ public class Indicators {
 	
 	public void populateIndicatorIcons(Context context, int textureNames[])
 	{
+		if (!mIndicatorIcons.isEmpty()) return;
+		
 		DataHandler dh = new DataHandler(context);
 		mTextureNames = textureNames;
 		
