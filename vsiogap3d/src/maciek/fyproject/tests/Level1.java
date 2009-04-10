@@ -23,16 +23,20 @@ import java.nio.ShortBuffer;
 
 import javax.microedition.khronos.opengles.GL10;
 
+import android.content.Context;
+
 class Level1
 {
-    public Level1()
+    public Level1(Context context)
     {
         //int one = 0x10000;
         
-    	Model model = new Model();
-        
-        int vertices[] = model.getVertices();
-        short indices[] = model.getIndices();
+    	int vertices[] = context.getResources().getIntArray(R.array.vertices);
+    	int indicesInt[] = context.getResources().getIntArray(R.array.indices);
+    	short indices[] = new short[indicesInt.length];
+    	for (int i = 0; i < indicesInt.length; i++) {
+    		indices[i] = (short)indicesInt[i];
+    	}
         
 //        int colors[] = {
 //	        0,    0,    0,  one,

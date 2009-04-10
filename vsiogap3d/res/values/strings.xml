@@ -2,5 +2,7 @@
 <resources>
     <string name="menuZoomIn">Zoom In</string>
     <string name="app_name">vsiogap3d</string>
-<string name="menuZoomOut">Zoom Out</string>
+	<string name="menuZoomOut">Zoom Out</string>
+	<string name="menuLoadModel">Load Model</string>
+	<string name="menuRefreshData">Refresh Data</string>
 </resources>

@@ -21,6 +21,8 @@ public class Vsiogap3d extends Activity {
 	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
+		menu.add(R.string.menuLoadModel);
+		menu.add(R.string.menuRefreshData);
 		if (mGLSurfaceView.getZoom() == -1) {
 			menu.add(R.string.menuZoomOut);
 			return true;
@@ -36,15 +38,19 @@ public class Vsiogap3d extends Activity {
 	 */
 	@Override
 	public boolean onPrepareOptionsMenu(Menu menu) {
+		// TODO: this is slow - remove one item instead of clearing the whole menu
+		menu.clear();
+		menu.add(R.string.menuLoadModel);
+		menu.add(R.string.menuRefreshData);
+		
 		if (mGLSurfaceView.getZoom() == -1) {
-			menu.clear();
 			menu.add(R.string.menuZoomOut);
 			return true;
 		} else if (mGLSurfaceView.getZoom() == 1) {
-			menu.clear();
 			menu.add(R.string.menuZoomIn);
 			return true;
 		}
+		
 		return false;
 	}
 
@@ -53,11 +59,13 @@ public class Vsiogap3d extends Activity {
 	 */
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		if (mGLSurfaceView.getZoom() == -1) {
-			mGLSurfaceView.setZoom(1);
-			return true;
-		} else if (mGLSurfaceView.getZoom() == 1) {
+		// TODO: this is slow - would be faster to use item ids not titles
+		String title = item.getTitle().toString();
+		if (title.equals("Zoom In")) {
 			mGLSurfaceView.setZoom(-1);
+			return true;
+		} else if (title.equals("Zoom Out")) {
+			mGLSurfaceView.setZoom(1);
 			return true;
 		}
 		return false;

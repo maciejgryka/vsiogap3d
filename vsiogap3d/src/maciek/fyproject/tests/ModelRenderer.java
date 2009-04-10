@@ -33,7 +33,7 @@ import android.opengl.GLUtils;
 public class ModelRenderer implements GLSurfaceView.Renderer {
     public ModelRenderer(Context context) {
     	mContext = context;
-        mLevel1 = new Level1();
+        mLevel1 = new Level1(mContext);
         mIndicators = new Indicators();
     }
 
