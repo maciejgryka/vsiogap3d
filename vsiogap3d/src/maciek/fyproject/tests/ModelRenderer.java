@@ -33,7 +33,7 @@ import android.opengl.GLUtils;
 public class ModelRenderer implements GLSurfaceView.Renderer {
     public ModelRenderer(Context context) {
     	mContext = context;
-        mLevel1 = new Level1(mContext);
+        mModel = new Model(mContext);
         mIndicators = new Indicators();
     }
 
@@ -54,7 +54,7 @@ public class ModelRenderer implements GLSurfaceView.Renderer {
 //        gl.glScalef(1.1f, 1.1f, 1.1f);
         
         mIndicators.draw(gl);
-        mLevel1.draw(gl);
+        mModel.draw(gl);
     }
 
     public int[] getConfigSpec() { 
@@ -168,7 +168,7 @@ public class ModelRenderer implements GLSurfaceView.Renderer {
     
     private Context mContext;
 	
-    private Level1 mLevel1;
+    private Model mModel;
     private Indicators mIndicators;
     private int[] mTextureNames;
     

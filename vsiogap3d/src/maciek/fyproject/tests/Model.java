@@ -25,9 +25,9 @@ import javax.microedition.khronos.opengles.GL10;
 
 import android.content.Context;
 
-class Level1
+class Model
 {
-    public Level1(Context context)
+    public Model(Context context)
     {
         //int one = 0x10000;
         
