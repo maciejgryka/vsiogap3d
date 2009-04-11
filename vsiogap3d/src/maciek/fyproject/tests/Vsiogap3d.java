@@ -1,12 +1,20 @@
 package maciek.fyproject.tests;
 
+import java.io.IOException;
+
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 
 public class Vsiogap3d extends Activity {
+	
+	private static final int DIALOG_ERROR = 1;
+	private static final int DIALOG_LOADING = 2;
 	
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,16 +67,51 @@ public class Vsiogap3d extends Activity {
 	 */
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// TODO: this is slow - would be faster to use item ids not titles
-		String title = item.getTitle().toString();
-		if (title.equals("Zoom In")) {
-			mGLSurfaceView.setZoom(-1);
-			return true;
-		} else if (title.equals("Zoom Out")) {
-			mGLSurfaceView.setZoom(1);
-			return true;
+		try {
+			// TODO: this is slow - would be faster to use item ids not titles
+			String title = item.getTitle().toString();
+			if (title.equals("Zoom In")) {
+				mGLSurfaceView.setZoom(-1);
+				return true;
+			} else if (title.equals("Zoom Out")) {
+				mGLSurfaceView.setZoom(1);
+				return true;
+			} else if (title.equals("Refresh Data")) {
+//				showDialog(DIALOG_LOADING);
+				FileDownloader fd = new FileDownloader(this);
+				boolean outcome = fd.getFile();
+//				removeDialog(DIALOG_LOADING);
+				return outcome;
+			}
+			return false;
+		} catch (IOException e) {
+			currentError = e.getMessage();
+			showDialog(DIALOG_ERROR);
+			return false;
+		} catch (Exception e) {
+			return false;
 		}
-		return false;
+	}
+		
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onCreateDialog(int)
+	 */
+	@Override
+	protected Dialog onCreateDialog(int id) {
+		switch (id) {
+	        case DIALOG_ERROR:
+	            return new AlertDialog.Builder(this)
+	                .setTitle("Error")
+	                .setPositiveButton("OK", null)
+	                .setMessage(currentError)
+	                .create();
+            case DIALOG_LOADING:
+            	return new AlertDialog.Builder(this)
+                .setTitle("Please wait...")
+                .setMessage("Loading...")
+                .create();
+		}
+		return super.onCreateDialog(id);
 	}
 
 	@Override
@@ -97,5 +140,6 @@ public class Vsiogap3d extends Activity {
 		return mGLSurfaceView.onTrackballEvent(event);
 	}
 
+	private String currentError = "";
 	private GLSurfaceView mGLSurfaceView;
 }
