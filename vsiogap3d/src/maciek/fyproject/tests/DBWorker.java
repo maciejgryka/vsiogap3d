@@ -16,10 +16,10 @@ public class DBWorker {
 	public DBWorker(SQLiteDatabase db) {
 		try {
 			mDb = db;
-//			db.execSQL("DROP TABLE IF EXISTS Measurement");
+			db.execSQL("DROP TABLE IF EXISTS Measurement");
 			createMeasurementTable();
 			createRoomTable();
-//			db.execSQL("DROP TABLE IF EXISTS Indicator");
+			db.execSQL("DROP TABLE IF EXISTS Indicator");
 			createIndicatorTable();
 		} catch (SQLException ex) {
 			// TODO write handle
@@ -84,7 +84,7 @@ public class DBWorker {
 		}
 	}
 	
-	public void insertMeasurement2(MeasurementData measurement)
+	public void insertMeasurement(Measurement measurement)
 	{
 		// If this is not the most recent record, ignore
 		boolean isNewest = isNewest(measurement);
@@ -155,10 +155,10 @@ public class DBWorker {
 	 * @param condition - SQL condition statement (including "WHERE" clause); enter null for no condition
 	 * @return ArrayList of all the Measurements
 	 */
-	public ArrayList<MeasurementData> getMeasurement(String condition)
+	public ArrayList<Measurement> getMeasurement(String condition)
 	{
 		try {
-			ArrayList<MeasurementData> measurements = new ArrayList<MeasurementData>();
+			ArrayList<Measurement> measurements = new ArrayList<Measurement>();
 			String q = "SELECT sensorId, temperature, light, movement, time FROM Measurement";
 			if (condition != null) {
 				q += condition;
@@ -167,7 +167,7 @@ public class DBWorker {
 			
 			for (int row = 0; row < cur.getCount(); row++) {
 				cur.moveToNext();
-				MeasurementData measurement = new MeasurementData();
+				Measurement measurement = new Measurement();
 				measurement.setSensorId(cur.getInt(0));
 				measurement.setTemperature(cur.getInt(1));
 				measurement.setLight(cur.getInt(2));
@@ -231,7 +231,7 @@ public class DBWorker {
 		}
 	}
 	
-	private boolean isNewest(MeasurementData measurement)
+	private boolean isNewest(Measurement measurement)
 	{
 		String mQuery = "SELECT sensorID, time FROM Measurement WHERE sensorId = '" + measurement.getSensorId() + "' AND time > datetime('" + measurement.getTime() + "');";
 		Cursor cur = mDb.rawQuery(mQuery, null);

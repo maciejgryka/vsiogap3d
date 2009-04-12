@@ -1,11 +1,8 @@
 package maciek.fyproject.tests;
 
-import java.io.IOException;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -78,19 +75,23 @@ public class Vsiogap3d extends Activity {
 				return true;
 			} else if (title.equals("Refresh Data")) {
 //				showDialog(DIALOG_LOADING);
-				FileDownloader fd = new FileDownloader(this);
-				boolean outcome = fd.getFile();
+//				FileDownloader fd = new FileDownloader(this);
+//				boolean outcome = fd.getFile();
+				DataHandler dh  = new DataHandler(this);
+				dh.readMeasurementData("");
 //				removeDialog(DIALOG_LOADING);
-				return outcome;
+//				return outcome;
+				return true;
 			}
 			return false;
-		} catch (IOException e) {
+		} catch (Exception e) {
 			currentError = e.getMessage();
 			showDialog(DIALOG_ERROR);
 			return false;
-		} catch (Exception e) {
-			return false;
-		}
+		} 
+//		catch (Exception e) {
+//			return false;
+//		}
 	}
 		
 	/* (non-Javadoc)

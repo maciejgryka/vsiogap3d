@@ -7,6 +7,12 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+
+import org.xml.sax.InputSource;
+import org.xml.sax.XMLReader;
+
 import android.content.Context;
 
 public class FileDownloader {
@@ -16,10 +22,6 @@ public class FileDownloader {
 	}
 	
 	public boolean getFile() throws IOException {
-		URL u;
-        HttpURLConnection c;
-        FileOutputStream f;
-        
 		try {
 			String state = android.os.Environment.getExternalStorageState(); 
 		    if(!state.equals(android.os.Environment.MEDIA_MOUNTED))  {
@@ -35,13 +37,26 @@ public class FileDownloader {
 		      throw new IOException("Path to file could not be created.");
 		    }
 		    
-			u = new URL(xmlUrl);
-			c = (HttpURLConnection)u.openConnection();
+		    URL u = new URL(xmlUrl);
+		    HttpURLConnection c = (HttpURLConnection)u.openConnection();
 			c.setRequestMethod("GET");
 	        c.setDoOutput(true);
 	        c.connect();
-			f = new FileOutputStream(new File(xmlPath));
+//			f = new FileOutputStream(new File(xmlPath));
+	        FileOutputStream f = new FileOutputStream(new File(xmlPath));
+	        
 	        InputStream in = c.getInputStream();
+	        
+	        /* Get a SAXParser from the SAXPArserFactory. */ 
+	        SAXParserFactory spf = SAXParserFactory.newInstance(); 
+	        SAXParser sp = spf.newSAXParser(); 
+	        /* Get the XMLReader of the SAXParser we created. */ 
+	        XMLReader xr = sp.getXMLReader(); 
+	        /* Create a new ContentHandler and apply it to the XML-Reader*/ 
+//	        ContentHandler h = mContext.getr 
+//	        xr.setContentHandler(h);
+	        xr.parse(new InputSource(in)); 
+	        // more code...... 
 	
 	        byte[] buffer = new byte[1024];
 		    int len1 = 0;

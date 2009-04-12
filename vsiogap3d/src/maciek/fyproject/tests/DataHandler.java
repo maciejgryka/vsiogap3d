@@ -1,5 +1,6 @@
 package maciek.fyproject.tests;
 
+import java.net.URL;
 import java.util.ArrayList;
 
 import android.content.Context;
@@ -19,7 +20,7 @@ public class DataHandler {
 	public DataHandler(Context context)
 	{
 		mContext = context;
-		dbw = new DBWorker(context.openOrCreateDatabase("vsiogapDB", 0, null));
+		mDbWorker = new DBWorker(context.openOrCreateDatabase("vsiogapDB", 0, null));
 	}
 	
 	public void readMeasurementData(int resourceId)
@@ -29,7 +30,7 @@ public class DataHandler {
 			String currentTag = "";
 			
 			int eventType = xrp.getEventType();
-			MeasurementData currentMeasurement = new MeasurementData();
+			Measurement currentMeasurement = new Measurement();
 			
 			while (eventType != XmlResourceParser.END_DOCUMENT) {
 				if (eventType == XmlResourceParser.START_TAG) {
@@ -38,7 +39,6 @@ public class DataHandler {
 						currentMeasurement.clear();
 					}
 				} else if (eventType == XmlResourceParser.TEXT) {
-					// no need to check what the currentTag is - if it's invalid nothing will be written
 					if (currentTag.equals("sensorId")) {
 						currentMeasurement.setSensorId(Integer.valueOf(xrp.getText()));
 					} else if (currentTag.equals("temperature")) {
@@ -52,12 +52,25 @@ public class DataHandler {
 					}
 				} else if (eventType == XmlResourceParser.END_TAG) {
 					if (xrp.getName().equals("measurement")) {
-						dbw.insertMeasurement2(currentMeasurement);
+						mDbWorker.insertMeasurement(currentMeasurement);
 					}
 				}
 				eventType = xrp.next();
 			}
 		} catch (Exception e) {
+			return;
+		}
+	}
+	
+	public void readMeasurementData(String stringUrl)
+	{
+		try {
+			URL url = new URL(stringUrl);
+			XmlHandler xh = new XmlHandler();
+			xh.getMeasurements(url, mDbWorker);
+		} catch (Exception e) {
+			// TODO: handle exception
+//			String s = "";
 			return;
 		}
 	}
@@ -90,7 +103,7 @@ public class DataHandler {
 				} else if (eventType == XmlResourceParser.END_TAG) {
 					if (xrp.getName().equals(type)) {
 						//dbw.insertMeasurement(currentMeasurement);
-						dbw.insertRecord(dataObject, type);
+						mDbWorker.insertRecord(dataObject, type);
 					}
 				}
 				eventType = xrp.next();
@@ -112,14 +125,14 @@ public class DataHandler {
 	 * @param condition - SQL condition statement (including "WHERE" clause); enter null for no condition
 	 * @return ArrayList of all the Measurements
 	 */
-	public ArrayList<MeasurementData> getMeasurement(String condition)
+	public ArrayList<Measurement> getMeasurement(String condition)
 	{
-		return dbw.getMeasurement(condition);
+		return mDbWorker.getMeasurement(condition);
 	}
 	
 	public float[] getIndicatorLocation(int sensorId, String type)
 	{
-		return dbw.getIndicatorLocation(sensorId, type);
+		return mDbWorker.getIndicatorLocation(sensorId, type);
 	}
 	
 	public float[] getTranslation(String sensorId, int type) {
@@ -139,7 +152,7 @@ public class DataHandler {
 	{
 		try {
 			mContext.deleteDatabase("vsiogapDB");
-			dbw.close();
+			mDbWorker.close();
 			return true;
 		} catch (Exception e) {
 			return false;
@@ -147,7 +160,7 @@ public class DataHandler {
 	}
 	
 	private Context mContext;
-	private static DBWorker dbw;
+	private static DBWorker mDbWorker;
 	
 	private float change = 0.0f;
 }

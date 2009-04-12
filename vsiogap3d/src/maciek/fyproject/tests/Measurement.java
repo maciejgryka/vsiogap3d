@@ -10,7 +10,7 @@ package maciek.fyproject.tests;
  */
 
 // TODO: change datatypes from String to more efficient ones (ints)
-public class MeasurementData {
+public class Measurement {
 	
 	public void clear()
 	{	

@@ -19,13 +19,15 @@ public class Indicators {
 		DataHandler dh = new DataHandler(context);
 		mTextureNames = textureNames;
 		
-		dh.readMeasurementData(R.xml.sensor);
+//		dh.readMeasurementData(R.xml.sensor);
+//		dh.readMeasurementData(context.getResources().getString(R.string.xmlPath));
+		dh.readMeasurementData(context.getResources().getString(R.string.xmlUrl));
 		dh.readIndicatorData(R.xml.indicators);
 		
 		// TODO: would be much faster to check if XML exists (and is valid) before writing to the database!
-		ArrayList<MeasurementData> measurementList = new ArrayList<MeasurementData>();
+		ArrayList<Measurement> measurementList = new ArrayList<Measurement>();
 		measurementList = dh.getMeasurement(null);
-		for (MeasurementData measurement : measurementList) {
+		for (Measurement measurement : measurementList) {
 			
 			int sensorId = measurement.getSensorId();
 			/* 
