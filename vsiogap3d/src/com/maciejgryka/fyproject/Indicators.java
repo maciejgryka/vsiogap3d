@@ -124,6 +124,6 @@ public class Indicators {
 		}
 	}
 	
-	private ArrayList<IndicatorIcon> mIndicatorIcons;
+	private static ArrayList<IndicatorIcon> mIndicatorIcons;
 	private int[] mTextureNames;
 }
