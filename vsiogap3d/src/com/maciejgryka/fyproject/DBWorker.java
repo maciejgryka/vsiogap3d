@@ -75,14 +75,14 @@ public class DBWorker {
 		return true;
 	}
 	
-	public void insertRecord(XmlDataObject dataObject, String type)
-	{
-		if (type.equals("measurement")) {
-//			insertMeasurement((MeasurementData)dataObject);
-		} else if (type.equals("indicator")) {
-			insertIndicator((IndicatorData)dataObject);
-		}
-	}
+//	public void insertRecord(XmlDataObject dataObject, String type)
+//	{
+//		if (type.equals("measurement")) {
+////			insertMeasurement((MeasurementData)dataObject);
+//		} else if (type.equals("indicator")) {
+//			insertIndicator((IndicatorData)dataObject);
+//		}
+//	}
 	
 	public void insertMeasurement(Measurement measurement)
 	{

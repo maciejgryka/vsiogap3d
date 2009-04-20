@@ -66,27 +66,19 @@ public class DataHandler {
 	{
 		try {
 			URL url = new URL(stringUrl);
-			XmlHandler xh = new XmlHandler();
+			XmlMeasurementHandler xh = new XmlMeasurementHandler();
 			xh.getMeasurements(url, mDbWorker);
 		} catch (Exception e) {
 			// TODO: handle exception
-//			String s = "";
 			return;
 		}
 	}
 	
 	public void readIndicatorData(int resourceId)
 	{
-		IndicatorData currentIndicator = new IndicatorData();
-		readXml(resourceId, currentIndicator, "indicator");
-	}
-	
-	// TODO DataHandler should know what datatype it's reading (string, date or int)
-	// and decide which measurement.set function to call. We need nested if statement here
-	private void readXml(int resourceId, XmlDataObject dataObject, String type)
-	{
-		//Measurement currentMeasurement = new Measurement();
 		try {
+			IndicatorData currentIndicator = new IndicatorData();
+			
 			XmlResourceParser xrp = mContext.getResources().getXml(resourceId);
 			String currentTag = "";
 			
@@ -94,16 +86,32 @@ public class DataHandler {
 			while (eventType != XmlResourceParser.END_DOCUMENT) {
 				if (eventType == XmlResourceParser.START_TAG) {
 					currentTag = xrp.getName();
-					if (currentTag.equals(type)) {
-						dataObject.clear();
+					if (currentTag.equals("indicator")) {
+						currentIndicator.clear();
 					}
 				} else if (eventType == XmlResourceParser.TEXT) {
-					// no need to check what the currentTag is - if it's invalid nothing will be written
-					dataObject.setAttribute(currentTag, xrp.getText());
+					if (currentTag.equals("sensorId")) {
+						currentIndicator.setSensorId(xrp.getText());
+					} else if (currentTag.equals("type")) {
+						currentIndicator.setType(xrp.getText());
+					} else if (currentTag.equals("translationX")) {
+						currentIndicator.setTranslationX(Float.valueOf(xrp.getText()));
+					} else if (currentTag.equals("translationY")) {
+						currentIndicator.setTranslationY(Float.valueOf(xrp.getText()));
+					} else if (currentTag.equals("translationZ")) {
+						currentIndicator.setTranslationZ(Float.valueOf(xrp.getText()));
+					} else if (currentTag.equals("rotationAngle")) {
+						currentIndicator.setRotationAngle(Float.valueOf(xrp.getText()));
+					} else if (currentTag.equals("rotationX")) {
+						currentIndicator.setRotationX(Float.valueOf(xrp.getText()));
+					} else if (currentTag.equals("rotationY")) {
+						currentIndicator.setRotationY(Float.valueOf(xrp.getText()));
+					} else if (currentTag.equals("rotationZ")) {
+						currentIndicator.setRotationZ(Float.valueOf(xrp.getText()));
+					}
 				} else if (eventType == XmlResourceParser.END_TAG) {
-					if (xrp.getName().equals(type)) {
-						//dbw.insertMeasurement(currentMeasurement);
-						mDbWorker.insertRecord(dataObject, type);
+					if (xrp.getName().equals("indicator")) {
+						mDbWorker.insertIndicator(currentIndicator);
 					}
 				}
 				eventType = xrp.next();

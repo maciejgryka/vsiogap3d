@@ -15,7 +15,7 @@ import org.xml.sax.helpers.DefaultHandler;
 
 import android.util.Log;
 
-public class XmlHandler extends DefaultHandler {
+public class XmlMeasurementHandler extends DefaultHandler {
 	
 	DBWorker mDbWorker;
 	Measurement currentMeasurement;
@@ -64,11 +64,11 @@ public class XmlHandler extends DefaultHandler {
             xr.parse(new InputSource(url.openStream()));
            
         } catch (IOException e) {
-            Log.e("vsiogap3d - XmlHandler", e.toString());
+            Log.e("vsiogap3d - XmlMeasurementHandler", e.toString());
         } catch (SAXException e) {
-            Log.e("vsiogap3d - XmlHandler", e.toString());
+            Log.e("vsiogap3d - XmlMeasurementHandler", e.toString());
         } catch (ParserConfigurationException e) {
-            Log.e("vsiogap3d - XmlHandler", e.toString());
+            Log.e("vsiogap3d - XmlMeasurementHandler", e.toString());
         }
     }
 }

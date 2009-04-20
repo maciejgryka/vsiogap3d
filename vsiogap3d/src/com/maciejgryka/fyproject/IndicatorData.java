@@ -1,6 +1,6 @@
 package com.maciejgryka.fyproject;
 
-public class IndicatorData extends XmlDataObject{
+public class IndicatorData {
 	
 	/*
 	 * Returns desired attribute. Possible attributes are:
@@ -69,7 +69,7 @@ public class IndicatorData extends XmlDataObject{
 		rotationAngle = rotationX = rotationY = rotationZ = 0.0f;
 	}
 
-	private String sensorId = "";
+	
 	/**
 	 * @return the sensorId
 	 */
@@ -195,7 +195,8 @@ public class IndicatorData extends XmlDataObject{
 	public void setRotationZ(float rotationZ) {
 		this.rotationZ = rotationZ;
 	}
-
+	
+	private String sensorId = "";
 	private String type = "";
 	private float translationX;
 	private float translationY;

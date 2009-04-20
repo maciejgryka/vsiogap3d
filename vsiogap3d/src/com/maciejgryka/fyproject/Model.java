@@ -14,6 +14,11 @@
  * limitations under the License.
  */
 
+/* 
+ * Modified by Maciej Gryka (2009)
+ * maciej.gryka@gmail.com
+ */
+
 package com.maciejgryka.fyproject;
 
 import java.nio.ByteBuffer;

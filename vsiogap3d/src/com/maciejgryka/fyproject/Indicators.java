@@ -27,6 +27,7 @@ public class Indicators {
 			if (ni != null) {
 				if (ni.getState() == NetworkInfo.State.CONNECTED) {
 					dh.readMeasurementData(context.getResources().getString(R.string.xmlUrl));
+//					dh.readMeasurementData(R.xml.sensor);
 					dh.readIndicatorData(R.xml.indicators);
 				} 
 			}
@@ -125,5 +126,5 @@ public class Indicators {
 	}
 	
 	private static ArrayList<IndicatorIcon> mIndicatorIcons;
-	private int[] mTextureNames;
+	public static int[] mTextureNames;
 }

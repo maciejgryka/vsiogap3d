@@ -14,6 +14,11 @@
  * limitations under the License.
  */
 
+/* 
+ * Modified by Maciej Gryka (2009)
+ * maciej.gryka@gmail.com
+ */
+
 package com.maciejgryka.fyproject;
 
 import android.content.Context;
@@ -67,9 +72,9 @@ public class GLSurfaceView extends SurfaceView implements SurfaceHolder.Callback
         return mHolder;
     }
 
-    public void setGLWrapper(GLWrapper glWrapper) {
-        mGLWrapper = glWrapper;
-    }
+//    public void setGLWrapper(GLWrapper glWrapper) {
+//        mGLWrapper = glWrapper;
+//    }
 
     public void setRenderer(Renderer renderer) {
         mGLThread = new GLThread(renderer);
@@ -236,9 +241,9 @@ public class GLSurfaceView extends SurfaceView implements SurfaceHolder.Callback
 
     // ----------------------------------------------------------------------
 
-    public interface GLWrapper {
-      GL wrap(GL gl);
-    }
+//    public interface GLWrapper {
+//      GL wrap(GL gl);
+//    }
 
     // ----------------------------------------------------------------------
 
@@ -362,9 +367,9 @@ public class GLSurfaceView extends SurfaceView implements SurfaceHolder.Callback
 
 
             GL gl = mEglContext.getGL();
-            if (mGLWrapper != null) {
-                gl = mGLWrapper.wrap(gl);
-            }
+//            if (mGLWrapper != null) {
+//                gl = mGLWrapper.wrap(gl);
+//            }
             return gl;
         }
 
@@ -659,5 +664,5 @@ public class GLSurfaceView extends SurfaceView implements SurfaceHolder.Callback
 
     private SurfaceHolder mHolder;
     private GLThread mGLThread;
-    private GLWrapper mGLWrapper;
+//    private GLWrapper mGLWrapper;
 }
