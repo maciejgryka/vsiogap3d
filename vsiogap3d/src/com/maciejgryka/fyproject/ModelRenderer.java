@@ -181,6 +181,6 @@ public class ModelRenderer implements GLSurfaceView.Renderer {
     private float panX = 0.0f;
     private float panY = 0.0f;
     private float distance = 4;
-    private float elevation = 0;
-    private float rotation = 0;
+    private float elevation = 45;
+    private float rotation = 90;
 }

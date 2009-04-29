@@ -8,4 +8,9 @@
 <string name="xmlPath">/sdcard/vsiogap3d/sensor.xml</string>
 <string name="xmlUrl">http://spice01.ee.surrey.ac.uk/android/sensor.xml</string>
 <string name="currentError">dupa</string>
+<string name="preferences">Preferences</string>
+<string name="default_datasource">http://spice01.ee.surrey.ac.uk/android/sensor.xml</string>
+<string name="preferencesDataSourceTitle">Data Source</string>
+<string name="preferencesDataSourceSummary">Edit the data file URL</string>
+<string name="preferencesDataSourceDialogTitle">Enter URL for the XML file</string>
 </resources>

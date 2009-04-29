@@ -39,34 +39,7 @@ class IndicatorIcon {
         		1.0f, 1.0f, 1.0f, 0f
         };
         
-        switch (type) {
-    	case 1:
-    		if (value > 25) {
-    			color[0] = 1.0f;
-    			color[1] = 0.7f;
-    			color[2] = 0.7f;
-    			color[3] = 0.0f;
-    		} else {
-    			color[0] = 0.7f;
-    			color[1] = 0.7f;
-    			color[2] = 1.0f;
-    			color[3] = 0.0f;
-    		}
-    		break;
-    	case 2:
-    		if (value > 50) {
-    			color[0] = 1.0f;
-    			color[1] = 1.0f;
-    			color[2] = 0.2f;
-    			color[3] = 0.0f;
-    		} else {
-    			color[0] = 0.5f;
-    			color[1] = 0.5f;
-    			color[2] = 0.2f;
-    			color[3] = 0.0f;
-    		}
-    		break;
-    	}
+        color = getColor(type, value);
         
 		float colors[] = {
 				color[0], color[1], color[2], color[3],
@@ -136,6 +109,47 @@ class IndicatorIcon {
     	gl.glTranslatef(-mTranslation[0], -mTranslation[1], -mTranslation[2]);
     }
     
+    private float[] getColor(int type, int value)
+    {
+    	float color[] = new float[4];
+    	
+    	switch (type) {
+    	case 1:
+    		if (value > 25) {
+    			color[0] = 1.0f;
+    			color[1] = 0.7f;
+    			color[2] = 0.7f;
+    			color[3] = 0.0f;
+    		} else {
+    			color[0] = 0.7f;
+    			color[1] = 0.7f;
+    			color[2] = 1.0f;
+    			color[3] = 0.0f;
+    		}
+    		break;
+    	case 2:
+    		if (value > 50) {
+    			color[0] = 1.0f;
+    			color[1] = 1.0f;
+    			color[2] = 0.2f;
+    			color[3] = 0.0f;
+    		} else {
+    			color[0] = 0.5f;
+    			color[1] = 0.5f;
+    			color[2] = 0.2f;
+    			color[3] = 0.0f;
+    		}
+    		break;
+    	default:
+    		color[0] = 1.0f;
+			color[1] = 1.0f;
+			color[2] = 1.0f;
+			color[3] = 0.0f;
+			break;
+    	}
+    	return color;
+    }
+    
     private final static int VERTS = 4;
 
     private IntBuffer mVertexBuffer;
@@ -144,7 +158,6 @@ class IndicatorIcon {
     private FloatBuffer   mColorBuffer;
 
     private int mType;
-    private int mValue;
     private float[] mTranslation;
     private float[] mRotation;
 }

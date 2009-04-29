@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+        <EditTextPreference
+                android:key="dataSource_preference"
+                android:defaultValue="@string/default_datasource"
+                android:title="@string/preferencesDataSourceTitle"
+                android:summary="@string/preferencesDataSourceSummary"
+                android:dialogTitle="@string/preferencesDataSourceDialogTitle" />
+</PreferenceScreen>  

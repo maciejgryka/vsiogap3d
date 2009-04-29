@@ -24,6 +24,7 @@ package com.maciejgryka.fyproject;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -46,19 +47,20 @@ public class Vsiogap3d extends Activity {
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
 	 */
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		menu.add(R.string.menuLoadModel);
-		menu.add(R.string.menuRefreshData);
-		if (mGLSurfaceView.getZoom() == -1) {
-			menu.add(R.string.menuZoomOut);
-			return true;
-		} else if (mGLSurfaceView.getZoom() == 1) {
-			menu.add(R.string.menuZoomIn);
-			return true;
-		}
-		return false;
-	}
+//	@Override
+//	public boolean onCreateOptionsMenu(Menu menu) {
+//		menu.add(R.string.menuRefreshData);
+//		if (mGLSurfaceView.getZoom() == -1) {
+//			menu.add(R.string.menuZoomOut);
+//			menu.add(R.string.preferences);
+//			return true;
+//		} else if (mGLSurfaceView.getZoom() == 1) {
+//			menu.add(R.string.menuZoomIn);
+//			menu.add(R.string.preferences);
+//			return true;
+//		}
+//		return false;
+//	}
 
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onPrepareOptionsMenu(android.view.Menu)
@@ -67,14 +69,15 @@ public class Vsiogap3d extends Activity {
 	public boolean onPrepareOptionsMenu(Menu menu) {
 		// TODO: this is slow - remove one item instead of clearing the whole menu
 		menu.clear();
-		menu.add(R.string.menuLoadModel);
 		menu.add(R.string.menuRefreshData);
 		
 		if (mGLSurfaceView.getZoom() == -1) {
 			menu.add(R.string.menuZoomOut);
+			menu.add(R.string.preferences);
 			return true;
 		} else if (mGLSurfaceView.getZoom() == 1) {
 			menu.add(R.string.menuZoomIn);
+			menu.add(R.string.preferences);
 			return true;
 		}
 		
@@ -100,6 +103,9 @@ public class Vsiogap3d extends Activity {
 				ModelRenderer modelRenderer = new ModelRenderer(this);
 		        mGLSurfaceView.setRenderer(modelRenderer);
 		        setContentView(mGLSurfaceView);
+				return true;
+			} else if (title.equals("Preferences")) {
+				startActivity(new Intent(this, Preferences.class));
 				return true;
 			}
 			return false;

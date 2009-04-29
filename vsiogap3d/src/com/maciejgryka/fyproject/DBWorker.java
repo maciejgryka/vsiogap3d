@@ -16,10 +16,10 @@ public class DBWorker {
 	public DBWorker(SQLiteDatabase db) {
 		try {
 			mDb = db;
-			db.execSQL("DROP TABLE IF EXISTS Measurement");
+//			db.execSQL("DROP TABLE IF EXISTS Measurement");
 			createMeasurementTable();
 			createRoomTable();
-			db.execSQL("DROP TABLE IF EXISTS Indicator");
+//			db.execSQL("DROP TABLE IF EXISTS Indicator");
 			createIndicatorTable();
 		} catch (SQLException ex) {
 			// TODO write handle
