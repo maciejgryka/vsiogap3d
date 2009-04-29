@@ -1,0 +1,1293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<array name="vertices">
+		<item>65536</item>
+		<item>58982</item>
+		<item>0</item>
+
+		<item>65536</item>
+		<item>-65536</item>
+		<item>0</item>
+
+		<item>0</item>
+		<item>-65536</item>
+		<item>0</item>
+
+		<item>0</item>
+		<item>58982</item>
+		<item>0</item>
+
+		<item>65536</item>
+		<item>-65536</item>
+		<item>0</item>
+
+		<item>0</item>
+		<item>-65536</item>
+		<item>0</item>
+
+		<item>0</item>
+		<item>-65536</item>
+		<item>-321126</item>
+
+		<item>65536</item>
+		<item>-65536</item>
+		<item>-321126</item>
+
+		<item>0</item>
+		<item>-117965</item>
+		<item>-321126</item>
+
+		<item>65536</item>
+		<item>-117965</item>
+		<item>-321126</item>
+
+		<item>65536</item>
+		<item>-117965</item>
+		<item>-386662</item>
+
+		<item>0</item>
+		<item>-117965</item>
+		<item>-386662</item>
+
+		<item>0</item>
+		<item>-58982</item>
+		<item>-386662</item>
+
+		<item>65536</item>
+		<item>-58982</item>
+		<item>-386662</item>
+
+		<item>65536</item>
+		<item>-58982</item>
+		<item>-386662</item>
+
+		<item>0</item>
+		<item>-58982</item>
+		<item>-386662</item>
+
+		<item>0</item>
+		<item>-58982</item>
+		<item>-557056</item>
+
+		<item>65536</item>
+		<item>-58982</item>
+		<item>-557056</item>
+
+		<item>65536</item>
+		<item>117965</item>
+		<item>-557056</item>
+
+		<item>0</item>
+		<item>117965</item>
+		<item>-557056</item>
+
+		<item>65536</item>
+		<item>117965</item>
+		<item>-445645</item>
+
+		<item>0</item>
+		<item>117965</item>
+		<item>-445645</item>
+
+		<item>65536</item>
+		<item>183501</item>
+		<item>-445645</item>
+
+		<item>0</item>
+		<item>183501</item>
+		<item>-445645</item>
+
+		<item>65536</item>
+		<item>183501</item>
+		<item>-484966</item>
+
+		<item>0</item>
+		<item>183501</item>
+		<item>-484966</item>
+
+		<item>65536</item>
+		<item>255590</item>
+		<item>-484966</item>
+
+		<item>0</item>
+		<item>255590</item>
+		<item>-484966</item>
+
+		<item>65536</item>
+		<item>255590</item>
+		<item>-445645</item>
+
+		<item>0</item>
+		<item>255590</item>
+		<item>-445645</item>
+
+		<item>65536</item>
+		<item>321126</item>
+		<item>-445645</item>
+
+		<item>0</item>
+		<item>321126</item>
+		<item>-445645</item>
+
+		<item>65536</item>
+		<item>321126</item>
+		<item>-557056</item>
+
+		<item>0</item>
+		<item>321126</item>
+		<item>-557056</item>
+
+		<item>65536</item>
+		<item>504627</item>
+		<item>-557056</item>
+
+		<item>0</item>
+		<item>504627</item>
+		<item>-557056</item>
+
+		<item>0</item>
+		<item>504627</item>
+		<item>-557056</item>
+
+		<item>65536</item>
+		<item>504627</item>
+		<item>-557056</item>
+
+		<item>0</item>
+		<item>504627</item>
+		<item>-190054</item>
+
+		<item>65536</item>
+		<item>504627</item>
+		<item>-190054</item>
+
+		<item>65536</item>
+		<item>517734</item>
+		<item>-190054</item>
+
+		<item>0</item>
+		<item>517734</item>
+		<item>-190054</item>
+
+		<item>0</item>
+		<item>517734</item>
+		<item>-157286</item>
+
+		<item>65536</item>
+		<item>517734</item>
+		<item>-157286</item>
+
+		<item>65536</item>
+		<item>504627</item>
+		<item>-157286</item>
+
+		<item>0</item>
+		<item>504627</item>
+		<item>-157286</item>
+
+		<item>0</item>
+		<item>504627</item>
+		<item>0</item>
+
+		<item>65536</item>
+		<item>504627</item>
+		<item>0</item>
+
+		<item>65536</item>
+		<item>386662</item>
+		<item>0</item>
+
+		<item>0</item>
+		<item>386662</item>
+		<item>0</item>
+
+		<item>0</item>
+		<item>386662</item>
+		<item>-19661</item>
+
+		<item>65536</item>
+		<item>386662</item>
+		<item>-19661</item>
+
+		<item>65536</item>
+		<item>58982</item>
+		<item>-19661</item>
+
+		<item>0</item>
+		<item>58982</item>
+		<item>-19661</item>
+
+		<item>0</item>
+		<item>58982</item>
+		<item>0</item>
+
+		<item>65536</item>
+		<item>58982</item>
+		<item>0</item>
+
+		<item>0</item>
+		<item>386662</item>
+		<item>-78643</item>
+
+		<item>65536</item>
+		<item>386662</item>
+		<item>-78643</item>
+
+		<item>0</item>
+		<item>-13107</item>
+		<item>-78643</item>
+
+		<item>65536</item>
+		<item>-13107</item>
+		<item>-78643</item>
+
+		<item>0</item>
+		<item>-13107</item>
+		<item>0</item>
+
+		<item>65536</item>
+		<item>-13107</item>
+		<item>0</item>
+
+		<item>0</item>
+		<item>-13107</item>
+		<item>-78643</item>
+
+		<item>65536</item>
+		<item>-13107</item>
+		<item>-78643</item>
+
+		<item>0</item>
+		<item>-13107</item>
+		<item>-399770</item>
+
+		<item>65536</item>
+		<item>-13107</item>
+		<item>-399770</item>
+
+		<item>0</item>
+		<item>0</item>
+		<item>-399770</item>
+
+		<item>65536</item>
+		<item>0</item>
+		<item>-399770</item>
+
+		<item>0</item>
+		<item>0</item>
+		<item>-445645</item>
+
+		<item>65536</item>
+		<item>0</item>
+		<item>-445645</item>
+
+		<item>0</item>
+		<item>13107</item>
+		<item>-445645</item>
+
+		<item>65536</item>
+		<item>13107</item>
+		<item>-445645</item>
+
+		<item>0</item>
+		<item>13107</item>
+		<item>-484966</item>
+
+		<item>65536</item>
+		<item>13107</item>
+		<item>-484966</item>
+
+		<item>0</item>
+		<item>32768</item>
+		<item>-484966</item>
+
+		<item>65536</item>
+		<item>32768</item>
+		<item>-484966</item>
+
+		<item>0</item>
+		<item>91750</item>
+		<item>-419430</item>
+
+		<item>65536</item>
+		<item>91750</item>
+		<item>-419430</item>
+
+		<item>0</item>
+		<item>229376</item>
+		<item>-419430</item>
+
+		<item>65536</item>
+		<item>229376</item>
+		<item>-419430</item>
+
+		<item>0</item>
+		<item>229376</item>
+		<item>-445645</item>
+
+		<item>65536</item>
+		<item>229376</item>
+		<item>-445645</item>
+
+		<item>65536</item>
+		<item>183501</item>
+		<item>-445645</item>
+
+		<item>0</item>
+		<item>183501</item>
+		<item>-445645</item>
+
+		<item>65536</item>
+		<item>321126</item>
+		<item>-386662</item>
+
+		<item>0</item>
+		<item>321126</item>
+		<item>-386662</item>
+
+		<item>65536</item>
+		<item>353894</item>
+		<item>-386662</item>
+
+		<item>0</item>
+		<item>353894</item>
+		<item>-386662</item>
+
+		<item>65536</item>
+		<item>72090</item>
+		<item>-386662</item>
+
+		<item>0</item>
+		<item>72090</item>
+		<item>-386662</item>
+
+		<item>0</item>
+		<item>72090</item>
+		<item>-393216</item>
+
+		<item>65536</item>
+		<item>72090</item>
+		<item>-393216</item>
+
+		<item>0</item>
+		<item>45875</item>
+		<item>-419430</item>
+
+		<item>65536</item>
+		<item>45875</item>
+		<item>-419430</item>
+
+		<item>0</item>
+		<item>19661</item>
+		<item>-419430</item>
+
+		<item>65536</item>
+		<item>19661</item>
+		<item>-419430</item>
+
+		<item>0</item>
+		<item>19661</item>
+		<item>-380109</item>
+
+		<item>65536</item>
+		<item>19661</item>
+		<item>-380109</item>
+
+		<item>0</item>
+		<item>13107</item>
+		<item>-380109</item>
+
+		<item>65536</item>
+		<item>13107</item>
+		<item>-380109</item>
+
+		<item>0</item>
+		<item>13107</item>
+		<item>-380109</item>
+
+		<item>65536</item>
+		<item>13107</item>
+		<item>-380109</item>
+
+		<item>0</item>
+		<item>13107</item>
+		<item>-216269</item>
+
+		<item>65536</item>
+		<item>13107</item>
+		<item>-216269</item>
+
+		<item>65536</item>
+		<item>72090</item>
+		<item>-216269</item>
+
+		<item>0</item>
+		<item>72090</item>
+		<item>-216269</item>
+
+		<item>65536</item>
+		<item>72090</item>
+		<item>-321126</item>
+
+		<item>0</item>
+		<item>72090</item>
+		<item>-321126</item>
+
+		<item>65536</item>
+		<item>13107</item>
+		<item>-321126</item>
+
+		<item>0</item>
+		<item>13107</item>
+		<item>-321126</item>
+
+		<item>65536</item>
+		<item>72090</item>
+		<item>-386662</item>
+
+		<item>0</item>
+		<item>72090</item>
+		<item>-386662</item>
+
+		<item>65536</item>
+		<item>321126</item>
+		<item>-321126</item>
+
+		<item>0</item>
+		<item>321126</item>
+		<item>-321126</item>
+
+		<item>0</item>
+		<item>321126</item>
+		<item>-321126</item>
+
+		<item>65536</item>
+		<item>321126</item>
+		<item>-321126</item>
+
+		<item>65536</item>
+		<item>321126</item>
+		<item>-190054</item>
+
+		<item>0</item>
+		<item>321126</item>
+		<item>-190054</item>
+
+		<item>65536</item>
+		<item>321126</item>
+		<item>-190054</item>
+
+		<item>0</item>
+		<item>321126</item>
+		<item>-190054</item>
+
+		<item>0</item>
+		<item>321126</item>
+		<item>-190054</item>
+
+		<item>65536</item>
+		<item>321126</item>
+		<item>-190054</item>
+
+		<item>65536</item>
+		<item>72090</item>
+		<item>-190054</item>
+
+		<item>0</item>
+		<item>72090</item>
+		<item>-190054</item>
+
+		<item>0</item>
+		<item>72090</item>
+		<item>-144179</item>
+
+		<item>65536</item>
+		<item>72090</item>
+		<item>-144179</item>
+
+		<item>0</item>
+		<item>72090</item>
+		<item>-144179</item>
+
+		<item>65536</item>
+		<item>72090</item>
+		<item>-144179</item>
+
+		<item>65536</item>
+		<item>13107</item>
+		<item>-144179</item>
+
+		<item>0</item>
+		<item>13107</item>
+		<item>-144179</item>
+
+		<item>65536</item>
+		<item>13107</item>
+		<item>-144179</item>
+
+		<item>0</item>
+		<item>13107</item>
+		<item>-144179</item>
+
+		<item>65536</item>
+		<item>13107</item>
+		<item>-104858</item>
+
+		<item>0</item>
+		<item>13107</item>
+		<item>-104858</item>
+
+		<item>65536</item>
+		<item>321126</item>
+		<item>-104858</item>
+
+		<item>0</item>
+		<item>321126</item>
+		<item>-104858</item>
+
+		<item>65536</item>
+		<item>321126</item>
+		<item>-117965</item>
+
+		<item>0</item>
+		<item>321126</item>
+		<item>-117965</item>
+
+		<item>65536</item>
+		<item>321126</item>
+		<item>-190054</item>
+
+		<item>0</item>
+		<item>321126</item>
+		<item>-190054</item>
+
+		<item>65536</item>
+		<item>386662</item>
+		<item>-117965</item>
+
+		<item>0</item>
+		<item>386662</item>
+		<item>-117965</item>
+
+		<item>65536</item>
+		<item>386662</item>
+		<item>-104858</item>
+
+		<item>0</item>
+		<item>386662</item>
+		<item>-104858</item>
+
+		<item>65536</item>
+		<item>393216</item>
+		<item>-104858</item>
+
+		<item>0</item>
+		<item>393216</item>
+		<item>-104858</item>
+
+		<item>0</item>
+		<item>419430</item>
+		<item>-131072</item>
+
+		<item>65536</item>
+		<item>419430</item>
+		<item>-131072</item>
+
+		<item>65536</item>
+		<item>419430</item>
+		<item>-216269</item>
+
+		<item>0</item>
+		<item>419430</item>
+		<item>-216269</item>
+
+		<item>0</item>
+		<item>399770</item>
+		<item>-216269</item>
+
+		<item>65536</item>
+		<item>399770</item>
+		<item>-216269</item>
+
+		<item>65536</item>
+		<item>321126</item>
+		<item>-216269</item>
+
+		<item>0</item>
+		<item>321126</item>
+		<item>-216269</item>
+
+		<item>0</item>
+		<item>399770</item>
+		<item>-242483</item>
+
+		<item>65536</item>
+		<item>399770</item>
+		<item>-242483</item>
+
+		<item>0</item>
+		<item>419430</item>
+		<item>-242483</item>
+
+		<item>65536</item>
+		<item>419430</item>
+		<item>-242483</item>
+
+		<item>0</item>
+		<item>419430</item>
+		<item>-386662</item>
+
+		<item>65536</item>
+		<item>419430</item>
+		<item>-386662</item>
+
+		<item>0</item>
+		<item>380109</item>
+		<item>-386662</item>
+
+		<item>65536</item>
+		<item>380109</item>
+		<item>-386662</item>
+
+		<item>0</item>
+		<item>380109</item>
+		<item>-373555</item>
+
+		<item>65536</item>
+		<item>380109</item>
+		<item>-373555</item>
+
+		<item>0</item>
+		<item>353894</item>
+		<item>-373555</item>
+
+		<item>65536</item>
+		<item>353894</item>
+		<item>-373555</item>
+
+		<item>65536</item>
+		<item>353894</item>
+		<item>-386662</item>
+
+		<item>0</item>
+		<item>353894</item>
+		<item>-386662</item>
+
+		<item>0</item>
+		<item>419430</item>
+		<item>-301466</item>
+
+		<item>65536</item>
+		<item>419430</item>
+		<item>-301466</item>
+
+		<item>0</item>
+		<item>419430</item>
+		<item>-386662</item>
+
+		<item>65536</item>
+		<item>419430</item>
+		<item>-386662</item>
+
+		<item>0</item>
+		<item>321126</item>
+		<item>-301466</item>
+
+		<item>65536</item>
+		<item>321126</item>
+		<item>-301466</item>
+
+		<item>65536</item>
+		<item>321126</item>
+		<item>-386662</item>
+
+		<item>0</item>
+		<item>321126</item>
+		<item>-386662</item>
+
+		<item>0</item>
+		<item>321126</item>
+		<item>-386662</item>
+
+		<item>65536</item>
+		<item>321126</item>
+		<item>-386662</item>
+
+		<item>65536</item>
+		<item>412877</item>
+		<item>-445645</item>
+
+		<item>0</item>
+		<item>412877</item>
+		<item>-445645</item>
+
+		<item>65536</item>
+		<item>412877</item>
+		<item>-471859</item>
+
+		<item>0</item>
+		<item>412877</item>
+		<item>-471859</item>
+
+		<item>65536</item>
+		<item>373555</item>
+		<item>-471859</item>
+
+		<item>0</item>
+		<item>373555</item>
+		<item>-471859</item>
+
+		<item>65536</item>
+		<item>373555</item>
+		<item>-504627</item>
+
+		<item>0</item>
+		<item>373555</item>
+		<item>-504627</item>
+
+		<item>0</item>
+		<item>445645</item>
+		<item>-504627</item>
+
+		<item>65536</item>
+		<item>445645</item>
+		<item>-504627</item>
+
+		<item>65536</item>
+		<item>445645</item>
+		<item>-65536</item>
+
+		<item>0</item>
+		<item>445645</item>
+		<item>-65536</item>
+
+		<item>0</item>
+		<item>386662</item>
+		<item>-65536</item>
+
+		<item>65536</item>
+		<item>386662</item>
+		<item>-65536</item>
+
+		<item>65536</item>
+		<item>229376</item>
+		<item>-190054</item>
+
+		<item>0</item>
+		<item>229376</item>
+		<item>-190054</item>
+
+		<item>0</item>
+		<item>229376</item>
+		<item>-190054</item>
+
+		<item>65536</item>
+		<item>229376</item>
+		<item>-190054</item>
+
+		<item>0</item>
+		<item>229376</item>
+		<item>-190054</item>
+
+		<item>65536</item>
+		<item>229376</item>
+		<item>-190054</item>
+
+		<item>65536</item>
+		<item>229376</item>
+		<item>-190054</item>
+
+		<item>0</item>
+		<item>229376</item>
+		<item>-190054</item>
+
+		<item>65536</item>
+		<item>176947</item>
+		<item>-190054</item>
+
+		<item>0</item>
+		<item>176947</item>
+		<item>-190054</item>
+
+		<item>0</item>
+		<item>176947</item>
+		<item>-190054</item>
+
+		<item>65536</item>
+		<item>176947</item>
+		<item>-190054</item>
+
+		<item>0</item>
+		<item>176947</item>
+		<item>-190054</item>
+
+		<item>65536</item>
+		<item>176947</item>
+		<item>-190054</item>
+
+		<item>0</item>
+		<item>176947</item>
+		<item>-190054</item>
+
+		<item>65536</item>
+		<item>176947</item>
+		<item>-190054</item>
+
+		<item>0</item>
+		<item>137626</item>
+		<item>-190054</item>
+
+		<item>65536</item>
+		<item>137626</item>
+		<item>-190054</item>
+
+		<item>0</item>
+		<item>137626</item>
+		<item>-190054</item>
+
+		<item>65536</item>
+		<item>137626</item>
+		<item>-190054</item>
+
+		<item>0</item>
+		<item>137626</item>
+		<item>-190054</item>
+
+		<item>65536</item>
+		<item>137626</item>
+		<item>-190054</item>
+
+		<item>0</item>
+		<item>137626</item>
+		<item>-190054</item>
+
+		<item>65536</item>
+		<item>137626</item>
+		<item>-190054</item>
+
+		<item>65536</item>
+		<item>72090</item>
+		<item>-190054</item>
+
+		<item>0</item>
+		<item>72090</item>
+		<item>-190054</item>
+
+		<item>0</item>
+		<item>72090</item>
+		<item>-190054</item>
+
+		<item>65536</item>
+		<item>72090</item>
+		<item>-190054</item>
+
+		<item>0</item>
+		<item>72090</item>
+		<item>-190054</item>
+
+		<item>65536</item>
+		<item>72090</item>
+		<item>-190054</item>
+
+		<item>65536</item>
+		<item>72090</item>
+		<item>-190054</item>
+
+		<item>0</item>
+		<item>72090</item>
+		<item>-190054</item>
+
+		<item>0</item>
+		<item>72090</item>
+		<item>-216269</item>
+
+		<item>65536</item>
+		<item>72090</item>
+		<item>-216269</item>
+
+		<item>0</item>
+		<item>72090</item>
+		<item>-216269</item>
+
+		<item>65536</item>
+		<item>72090</item>
+		<item>-216269</item>
+
+		<item>0</item>
+		<item>72090</item>
+		<item>-216269</item>
+
+		<item>65536</item>
+		<item>72090</item>
+		<item>-216269</item>
+
+		<item>0</item>
+		<item>72090</item>
+		<item>-216269</item>
+
+		<item>65536</item>
+		<item>72090</item>
+		<item>-216269</item>
+
+		<item>65536</item>
+		<item>137626</item>
+		<item>-104858</item>
+
+		<item>0</item>
+		<item>137626</item>
+		<item>-104858</item>
+
+		<item>0</item>
+		<item>137626</item>
+		<item>-104858</item>
+
+		<item>65536</item>
+		<item>137626</item>
+		<item>-104858</item>
+
+		<item>0</item>
+		<item>137626</item>
+		<item>-104858</item>
+
+		<item>65536</item>
+		<item>137626</item>
+		<item>-104858</item>
+
+		<item>65536</item>
+		<item>137626</item>
+		<item>-104858</item>
+
+		<item>0</item>
+		<item>137626</item>
+		<item>-104858</item>
+
+		<item>0</item>
+		<item>176947</item>
+		<item>-104858</item>
+
+		<item>65536</item>
+		<item>176947</item>
+		<item>-104858</item>
+
+		<item>0</item>
+		<item>176947</item>
+		<item>-104858</item>
+
+		<item>65536</item>
+		<item>176947</item>
+		<item>-104858</item>
+
+		<item>0</item>
+		<item>176947</item>
+		<item>-104858</item>
+
+		<item>65536</item>
+		<item>176947</item>
+		<item>-104858</item>
+
+		<item>0</item>
+		<item>176947</item>
+		<item>-104858</item>
+
+		<item>65536</item>
+		<item>176947</item>
+		<item>-104858</item>
+
+		<item>65536</item>
+		<item>229376</item>
+		<item>-104858</item>
+
+		<item>0</item>
+		<item>229376</item>
+		<item>-104858</item>
+
+		<item>0</item>
+		<item>229376</item>
+		<item>-104858</item>
+
+		<item>65536</item>
+		<item>229376</item>
+		<item>-104858</item>
+
+		<item>0</item>
+		<item>229376</item>
+		<item>-104858</item>
+
+		<item>65536</item>
+		<item>229376</item>
+		<item>-104858</item>
+
+		<item>0</item>
+		<item>229376</item>
+		<item>-104858</item>
+
+		<item>65536</item>
+		<item>229376</item>
+		<item>-104858</item>
+
+		<item>65536</item>
+		<item>288358</item>
+		<item>-386662</item>
+
+		<item>0</item>
+		<item>288358</item>
+		<item>-386662</item>
+
+		<item>65536</item>
+		<item>288358</item>
+		<item>-386662</item>
+
+		<item>0</item>
+		<item>288358</item>
+		<item>-386662</item>
+
+		<item>0</item>
+		<item>288358</item>
+		<item>-386662</item>
+
+		<item>65536</item>
+		<item>288358</item>
+		<item>-386662</item>
+
+		<item>65536</item>
+		<item>242483</item>
+		<item>-386662</item>
+
+		<item>0</item>
+		<item>242483</item>
+		<item>-386662</item>
+
+		<item>65536</item>
+		<item>242483</item>
+		<item>-386662</item>
+
+		<item>0</item>
+		<item>242483</item>
+		<item>-386662</item>
+
+		<item>0</item>
+		<item>242483</item>
+		<item>-386662</item>
+
+		<item>65536</item>
+		<item>242483</item>
+		<item>-386662</item>
+
+		<item>65536</item>
+		<item>183501</item>
+		<item>-386662</item>
+
+		<item>0</item>
+		<item>183501</item>
+		<item>-386662</item>
+
+		<item>65536</item>
+		<item>183501</item>
+		<item>-386662</item>
+
+		<item>0</item>
+		<item>183501</item>
+		<item>-386662</item>
+
+		<item>0</item>
+		<item>183501</item>
+		<item>-386662</item>
+
+		<item>65536</item>
+		<item>183501</item>
+		<item>-386662</item>
+
+		<item>65536</item>
+		<item>144179</item>
+		<item>-386662</item>
+
+		<item>0</item>
+		<item>144179</item>
+		<item>-386662</item>
+
+		<item>65536</item>
+		<item>144179</item>
+		<item>-386662</item>
+
+		<item>0</item>
+		<item>144179</item>
+		<item>-386662</item>
+
+		<item>0</item>
+		<item>144179</item>
+		<item>-386662</item>
+
+		<item>65536</item>
+		<item>144179</item>
+		<item>-386662</item>
+
+		<item>0</item>
+		<item>111411</item>
+		<item>-386662</item>
+
+		<item>65536</item>
+		<item>111411</item>
+		<item>-386662</item>
+
+		<item>65536</item>
+		<item>111411</item>
+		<item>-386662</item>
+
+		<item>0</item>
+		<item>111411</item>
+		<item>-386662</item>
+
+		<item>0</item>
+		<item>111411</item>
+		<item>-386662</item>
+
+		<item>65536</item>
+		<item>111411</item>
+		<item>-386662</item>
+
+		<item>0</item>
+		<item>72090</item>
+		<item>-386662</item>
+
+		<item>65536</item>
+		<item>72090</item>
+		<item>-386662</item>
+
+		<item>65536</item>
+		<item>72090</item>
+		<item>-386662</item>
+
+		<item>0</item>
+		<item>72090</item>
+		<item>-386662</item>
+
+		<item>0</item>
+		<item>72090</item>
+		<item>-386662</item>
+
+		<item>65536</item>
+		<item>72090</item>
+		<item>-386662</item>
+
+		<item>0</item>
+		<item>111411</item>
+		<item>-321126</item>
+
+		<item>65536</item>
+		<item>111411</item>
+		<item>-321126</item>
+
+		<item>65536</item>
+		<item>111411</item>
+		<item>-321126</item>
+
+		<item>0</item>
+		<item>111411</item>
+		<item>-321126</item>
+
+		<item>0</item>
+		<item>111411</item>
+		<item>-321126</item>
+
+		<item>65536</item>
+		<item>111411</item>
+		<item>-321126</item>
+
+		<item>65536</item>
+		<item>144179</item>
+		<item>-321126</item>
+
+		<item>0</item>
+		<item>144179</item>
+		<item>-321126</item>
+
+		<item>65536</item>
+		<item>144179</item>
+		<item>-321126</item>
+
+		<item>0</item>
+		<item>144179</item>
+		<item>-321126</item>
+
+		<item>0</item>
+		<item>144179</item>
+		<item>-321126</item>
+
+		<item>65536</item>
+		<item>144179</item>
+		<item>-321126</item>
+
+		<item>65536</item>
+		<item>183501</item>
+		<item>-321126</item>
+
+		<item>0</item>
+		<item>183501</item>
+		<item>-321126</item>
+
+		<item>65536</item>
+		<item>183501</item>
+		<item>-321126</item>
+
+		<item>0</item>
+		<item>183501</item>
+		<item>-321126</item>
+
+		<item>0</item>
+		<item>183501</item>
+		<item>-321126</item>
+
+		<item>65536</item>
+		<item>183501</item>
+		<item>-321126</item>
+
+		<item>65536</item>
+		<item>242483</item>
+		<item>-321126</item>
+
+		<item>0</item>
+		<item>242483</item>
+		<item>-321126</item>
+
+		<item>65536</item>
+		<item>242483</item>
+		<item>-321126</item>
+
+		<item>0</item>
+		<item>242483</item>
+		<item>-321126</item>
+
+		<item>0</item>
+		<item>242483</item>
+		<item>-321126</item>
+
+		<item>65536</item>
+		<item>242483</item>
+		<item>-321126</item>
+
+		<item>65536</item>
+		<item>288358</item>
+		<item>-321126</item>
+
+		<item>0</item>
+		<item>288358</item>
+		<item>-321126</item>
+
+		<item>65536</item>
+		<item>288358</item>
+		<item>-321126</item>
+
+		<item>0</item>
+		<item>288358</item>
+		<item>-321126</item>
+
+		<item>0</item>
+		<item>288358</item>
+		<item>-321126</item>
+
+		<item>65536</item>
+		<item>288358</item>
+		<item>-321126</item>
+
+	</array>
+</resources>
