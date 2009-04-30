@@ -39,6 +39,7 @@ public class Vsiogap3d extends Activity {
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        
         mGLSurfaceView = new GLSurfaceView(this);
         mGLSurfaceView.setRenderer(new ModelRenderer(this));
         setContentView(mGLSurfaceView);
@@ -168,5 +169,4 @@ public class Vsiogap3d extends Activity {
 
 	private String currentError = "";
 	private GLSurfaceView mGLSurfaceView;
-	private TextView loading;
 }

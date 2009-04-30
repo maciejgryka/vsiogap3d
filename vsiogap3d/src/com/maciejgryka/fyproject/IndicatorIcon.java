@@ -115,7 +115,7 @@ class IndicatorIcon {
     	
     	switch (type) {
     	case 1:
-    		if (value > 25) {
+    		if (value > 20) {
     			color[0] = 1.0f;
     			color[1] = 0.7f;
     			color[2] = 0.7f;
@@ -155,7 +155,7 @@ class IndicatorIcon {
     private IntBuffer mVertexBuffer;
     private IntBuffer mTexBuffer;
     private ShortBuffer mIndexBuffer;
-    private FloatBuffer   mColorBuffer;
+    private FloatBuffer mColorBuffer;
 
     private int mType;
     private float[] mTranslation;

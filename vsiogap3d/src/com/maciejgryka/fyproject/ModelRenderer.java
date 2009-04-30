@@ -23,6 +23,9 @@ package com.maciejgryka.fyproject;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.nio.FloatBuffer;
 
 import javax.microedition.khronos.egl.EGL10;
 import javax.microedition.khronos.opengles.GL10;
@@ -55,7 +58,6 @@ public class ModelRenderer implements GLSurfaceView.Renderer {
         
         if (zoom != 0) changeDistance((float)zoom/50);
         polarView(gl, panX, panY, distance, elevation, rotation);
-
 //        gl.glScalef(1.1f, 1.1f, 1.1f);
 
         mIndicators.draw(gl);
@@ -97,10 +99,56 @@ public class ModelRenderer implements GLSurfaceView.Renderer {
     	gl.glEnable(GL10.GL_DEPTH_TEST);
     	gl.glEnable(GL10.GL_TEXTURE_2D);
     	
+//    	gl.glEnable(GL10.GL_LIGHTING);
+//    	gl.glEnable(GL10.GL_LIGHT0);
+//    	gl.glEnable(GL10.GL_LIGHT1);
+//    	gl.glEnable(GL10.GL_LIGHT2);
+//    	gl.glEnable(GL10.GL_LIGHT3);
+//    	
+//    	float light_ambient[] = {1.0f, 1.0f, 1.0f, 1.0f};
+//    	float light_diffuse[] = {1.0f, 1.0f, 1.0f, 1.0f};
+//    	float light_specular[] = {1.0f, 1.0f, 1.0f, 1.0f};
+//    	float light_position0[] = {0.0f, 1.0f, 0.0f, 0.0f};
+//    	float light_position1[] = {0.0f, 1.0f, 1.0f, 0.0f};
+//    	float light_position2[] = {1.0f, 1.0f, 0.0f, 0.0f};
+//    	float light_position3[] = {1.0f, 1.0f, 1.0f, 0.0f};
+//    	
+//    	gl.glLightfv(GL10.GL_LIGHT0, GL10.GL_AMBIENT, getFloatBuffer(light_ambient));
+//    	gl.glLightfv(GL10.GL_LIGHT0, GL10.GL_DIFFUSE, getFloatBuffer(light_diffuse));
+//    	gl.glLightfv(GL10.GL_LIGHT0, GL10.GL_SPECULAR, getFloatBuffer(light_specular));
+//    	gl.glLightfv(GL10.GL_LIGHT0, GL10.GL_POSITION, getFloatBuffer(light_position0));
+//    	
+//    	gl.glLightfv(GL10.GL_LIGHT1, GL10.GL_AMBIENT, getFloatBuffer(light_ambient));
+//    	gl.glLightfv(GL10.GL_LIGHT1, GL10.GL_DIFFUSE, getFloatBuffer(light_diffuse));
+//    	gl.glLightfv(GL10.GL_LIGHT1, GL10.GL_SPECULAR, getFloatBuffer(light_specular));
+//    	gl.glLightfv(GL10.GL_LIGHT1, GL10.GL_POSITION, getFloatBuffer(light_position1));
+//    	
+//    	gl.glLightfv(GL10.GL_LIGHT2, GL10.GL_AMBIENT, getFloatBuffer(light_ambient));
+//    	gl.glLightfv(GL10.GL_LIGHT2, GL10.GL_DIFFUSE, getFloatBuffer(light_diffuse));
+//    	gl.glLightfv(GL10.GL_LIGHT2, GL10.GL_SPECULAR, getFloatBuffer(light_specular));
+//    	gl.glLightfv(GL10.GL_LIGHT2, GL10.GL_POSITION, getFloatBuffer(light_position2));
+//    	
+//    	gl.glLightfv(GL10.GL_LIGHT3, GL10.GL_AMBIENT, getFloatBuffer(light_ambient));
+//    	gl.glLightfv(GL10.GL_LIGHT3, GL10.GL_DIFFUSE, getFloatBuffer(light_diffuse));
+//    	gl.glLightfv(GL10.GL_LIGHT3, GL10.GL_SPECULAR, getFloatBuffer(light_specular));
+//    	gl.glLightfv(GL10.GL_LIGHT3, GL10.GL_POSITION, getFloatBuffer(light_position3));
+    	
     	gl.glClearColor(0,0,0,0);
     	bindTextures(gl);
     	mIndicators.populateIndicatorIcons(mContext, mTextureNames);
     }
+    
+//    public FloatBuffer getFloatBuffer(float[] array)
+//    {
+//    	FloatBuffer floatBuffer;
+//    	ByteBuffer cbb = ByteBuffer.allocateDirect(array.length*4);
+//		cbb.order(ByteOrder.nativeOrder());
+//		floatBuffer = cbb.asFloatBuffer();
+//		floatBuffer.put(array);
+//		floatBuffer.position(0);
+//		
+//		return floatBuffer;
+//    }
     
     private void bindTextures(GL10 gl)
     {

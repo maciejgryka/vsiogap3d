@@ -23,6 +23,7 @@ package com.maciejgryka.fyproject;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 import java.nio.ShortBuffer;
 
@@ -33,30 +34,14 @@ import android.content.Context;
 class Model
 {
     public Model(Context context)
-    {
-        //int one = 0x10000;
-        
+    {        
     	int vertices[] = context.getResources().getIntArray(R.array.vertices);
+    	
     	int indicesInt[] = context.getResources().getIntArray(R.array.indices);
     	short indices[] = new short[indicesInt.length];
     	for (int i = 0; i < indicesInt.length; i++) {
     		indices[i] = (short)indicesInt[i];
     	}
-        
-//        int colors[] = {
-//	        0,    0,    0,  one,
-//	        one,    0,    0,  one,
-//	        one,  one,    0,  one,
-//	        0,  one,    0,  one,
-//	        0,    0,  one,  one,
-//	        one,    0,  one,  one,
-//	        one,  one,  one,  one,
-//	        0,  one,  one,  one,
-//        };
-        
-//        int colors[] = {
-//                one, one, 0, one
-//        };
 
         // Buffers to be passed to gl*Pointer() functions
         // must be direct, i.e., they must be placed on the
@@ -74,12 +59,6 @@ class Model
         mVertexBuffer = vbb.asIntBuffer();
         mVertexBuffer.put(vertices);
         mVertexBuffer.position(0);
-
-//        ByteBuffer cbb = ByteBuffer.allocateDirect(colors.length*4);
-//        cbb.order(ByteOrder.nativeOrder());
-//        mColorBuffer = cbb.asIntBuffer();
-//        mColorBuffer.put(colors);
-//        mColorBuffer.position(0);
         
         ByteBuffer ibb = ByteBuffer.allocateDirect(indices.length*4);
         ibb.order(ByteOrder.nativeOrder());
@@ -89,7 +68,7 @@ class Model
     }
 
     public void draw(GL10 gl)
-    {
+    {	
     	gl.glTranslatef(0.4f, -0.5f, 4.5f);
     	gl.glRotatef(90, 0, 0, 1);
     	gl.glTranslatef(0.0f, -3.0f, 0.0f);
@@ -97,13 +76,11 @@ class Model
     	gl.glDisable(GL10.GL_CULL_FACE);
         
     	gl.glVertexPointer(3, GL10.GL_FIXED, 0, mVertexBuffer);
-        //gl.glColorPointer(4, GL10.GL_FIXED, 0, mColorBuffer);
         
         gl.glDrawElements(GL10.GL_TRIANGLES, 212*6, GL10.GL_UNSIGNED_SHORT, mIndexBuffer);
         gl.glScalef(0.5f, 0.5f, 0.5f);
     }
 
     private IntBuffer   mVertexBuffer;
-    //private IntBuffer   mColorBuffer;
     private ShortBuffer	mIndexBuffer;
 }

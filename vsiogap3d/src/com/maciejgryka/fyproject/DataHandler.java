@@ -79,8 +79,8 @@ public class DataHandler {
 			}
 			else {
 //				return false;
-				readMeasurementData(R.xml.sensor);
-				readIndicatorData(R.xml.indicators);
+//				readMeasurementData(R.xml.sensor);
+//				readIndicatorData(R.xml.indicators);
 			}
 			
 		} catch (Exception e) {

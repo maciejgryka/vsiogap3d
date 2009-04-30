@@ -1,10 +1,16 @@
 package com.maciejgryka.fyproject;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
 import javax.microedition.khronos.opengles.GL10;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 
 public class Indicators {
 	public Indicators()
@@ -20,25 +26,11 @@ public class Indicators {
 		DataHandler dh = new DataHandler(context);
 		mTextureNames = textureNames;
 		
-//		try {
-//			ConnectivityManager cm = (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
-//			NetworkInfo ni = cm.getActiveNetworkInfo();
-//			if (ni != null) {
-//				if (ni.getState() == NetworkInfo.State.CONNECTED) {
-//					dh.readMeasurementData(context.getResources().getString(R.string.xmlUrl));
-////					dh.readMeasurementData(R.xml.sensor);
-//					dh.readIndicatorData(R.xml.indicators);
-//				} 
-//			}
-//			else {
-//				dh.readMeasurementData(R.xml.sensor);
-//				// TODO: when the DB already has indicator data, don't parse
-//				dh.readIndicatorData(R.xml.indicators);
-//			}
-//		} catch (Exception e) {
-//			// Ignore
-//		}
-		dh.readMeasurementData(context.getResources().getString(R.string.xmlUrl));
+		SharedPreferences preferences = context.getSharedPreferences("com.maciejgryka.fyproject_preferences", Context.MODE_WORLD_WRITEABLE);
+		String url = preferences.getString("dataSource_preference", null);
+		
+//		dh.readMeasurementData(context.getResources().getString(R.string.xmlUrl));
+		dh.readMeasurementData(url);
 		
 		
 		// TODO: should be much faster to check if XML exists (and is valid) before writing to the database!
@@ -103,7 +95,7 @@ public class Indicators {
 				}
 			}
 		}
-	}
+	}	
 	
 	public void addIndicatorIcon(int type, int value, float translation[], float rotation[])
 	{
