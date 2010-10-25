@@ -13,6 +13,8 @@ import android.database.sqlite.SQLiteDatabase;
  */
 public class DBWorker {
 	
+	private static SQLiteDatabase mDb;
+	
 	public DBWorker(SQLiteDatabase db) {
 		try {
 			mDb = db;
@@ -27,32 +29,14 @@ public class DBWorker {
 		}
 	}
 	
-	private boolean createMeasurementTable() throws SQLException
+	public boolean close()
 	{
-		mDb.execSQL(
-				"CREATE TABLE IF NOT EXISTS " +
-				"Measurement(" +
-				"sensorId integer not null, " +
-				"temperature integer, " +
-				"light integer, " +
-				"movement integer, " +
-				"time text not null," +
-				"PRIMARY KEY (sensorId, time));"
-		);
-
-		return true;
-	}
-	
-	private boolean createRoomTable() throws SQLException
-	{
-		mDb.execSQL(
-				"CREATE TABLE IF NOT EXISTS " +
-				"Room(" +
-				"sensorId text primary key, " +
-				"name text not null, " +
-				"floor text);"
-		);
-		return true;
+		try {
+			mDb.close();
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 	
 	private boolean createIndicatorTable() throws SQLException
@@ -84,24 +68,20 @@ public class DBWorker {
 //		}
 //	}
 	
-	public void insertMeasurement(Measurement measurement)
+	private boolean createMeasurementTable() throws SQLException
 	{
-		// If this is not the most recent record, ignore
-		boolean isNewest = isNewest(measurement);
-		if (!isNewest) return;
-		
-		// If it is the most recent record, delete all the older ones from the database
-		mDb.execSQL("DELETE FROM Measurement WHERE sensorId = '" + measurement.getSensorId() + "';");
-		
-		String q = "INSERT INTO Measurement (sensorId, temperature, light, movement, time) VALUES ('" +
-		measurement.getSensorId() + "', '" +
-		measurement.getTemperature() + "', '" +
-		measurement.getLight() + "', '" +
-		measurement.getMovement() + "', '" +
-		measurement.getTime() + "');";
-		
-		mDb.execSQL(q);
-		return;
+		mDb.execSQL(
+				"CREATE TABLE IF NOT EXISTS " +
+				"Measurement(" +
+				"sensorId integer not null, " +
+				"temperature integer, " +
+				"light integer, " +
+				"movement integer, " +
+				"time text not null," +
+				"PRIMARY KEY (sensorId, time));"
+		);
+
+		return true;
 	}
 	
 //	public void insertMeasurement(MeasurementData measurement)
@@ -126,28 +106,70 @@ public class DBWorker {
 //		}
 //	}
 	
-	public void insertIndicator(IndicatorData indicator)
+	private boolean createRoomTable() throws SQLException
+	{
+		mDb.execSQL(
+				"CREATE TABLE IF NOT EXISTS " +
+				"Room(" +
+				"sensorId text primary key, " +
+				"name text not null, " +
+				"floor text);"
+		);
+		return true;
+	}
+	
+	/**
+	 * Returns float[] with indicator location data
+	 * @param sensorId room identifier
+	 * @param type of measurements (0 for temperature, 1 for light, 2 for movement)
+	 */
+	public float[] getIndicatorLocation(int sensorId, String type)
 	{
 		try {
-			String q = "INSERT INTO Indicator " +
-					"(sensorId, type, translationX, translationY, translationZ, rotationAngle, rotationX, rotationY, rotationZ) " +
-					"VALUES ('" +
-					indicator.getSensorId() + "', '" +
-					indicator.getType() + "', '" +
-					indicator.getTranslationX() + "', '" +
-					indicator.getTranslationY() + "', '" +
-					indicator.getTranslationZ() + "', '" +
-					indicator.getRotationAngle() + "', '" +
-					indicator.getRotationX() + "', '" +
-					indicator.getRotationY() + "', '" +
-					indicator.getRotationZ() + "');";
-			mDb.execSQL(q);
-		} catch (SQLException e) {
-			// TODO: write handler
-			return;
+			String columns[] = {
+					"translationX", "translationY", "translationZ",
+					"rotationAngle", "rotationX", "rotationY", "rotationZ"
+			};
+			//String selectionArgs[] = {sensorId, type};
+			Cursor cur = mDb.query("Indicator", columns, "sensorId = '" + sensorId + "' AND type = '" + type + "'", null, null, null, null);
+			
+			float location[] = new float[7];
+			cur.moveToFirst();
+			location[0] = cur.getFloat(0);
+			location[1] = cur.getFloat(1);
+			location[2] = cur.getFloat(2);
+			location[3] = cur.getFloat(3);
+			location[4] = cur.getFloat(4);
+			location[5] = cur.getFloat(5);
+			location[6] = cur.getFloat(6);
+			
+			cur.close();
+			return location;
+		} catch (Exception e) {
+			// TODO write handle
+			return null;
 		}
 	}
 	
+//	private int insertIndicator(
+//			String sensorId, String type, 
+//			float translationX, float translationY, float translationZ,
+//			float rotationAngle, float rotationX, float rotationY, float rotationZ)
+//	{
+//		ContentValues cv = new ContentValues();
+//		cv.put("sensorId", sensorId);
+//		cv.put("type", type);
+//		cv.put("translationX", translationX);
+//		cv.put("translationY", translationY);
+//		cv.put("translationZ", translationZ);
+//		cv.put("rotationAngle", rotationAngle);
+//		cv.put("rotationX", rotationX);
+//		cv.put("rotationY", rotationY);
+//		cv.put("rotationZ", rotationZ);
+//		int result = (int)mDb.insert("Indicator", "", cv); 
+//		return result;
+//	}
+
 	/**
 	 * Gets all columns of the matching records from the Measurement table 
 	 * (sensorId, temperature, light, movement, time).
@@ -184,56 +206,46 @@ public class DBWorker {
 		}
 	}
 	
-//	private int insertIndicator(
-//			String sensorId, String type, 
-//			float translationX, float translationY, float translationZ,
-//			float rotationAngle, float rotationX, float rotationY, float rotationZ)
-//	{
-//		ContentValues cv = new ContentValues();
-//		cv.put("sensorId", sensorId);
-//		cv.put("type", type);
-//		cv.put("translationX", translationX);
-//		cv.put("translationY", translationY);
-//		cv.put("translationZ", translationZ);
-//		cv.put("rotationAngle", rotationAngle);
-//		cv.put("rotationX", rotationX);
-//		cv.put("rotationY", rotationY);
-//		cv.put("rotationZ", rotationZ);
-//		int result = (int)mDb.insert("Indicator", "", cv); 
-//		return result;
-//	}
-
-	/**
-	 * Returns float[] with indicator location data
-	 * @param sensorId room identifier
-	 * @param type of measurements (0 for temperature, 1 for light, 2 for movement)
-	 */
-	public float[] getIndicatorLocation(int sensorId, String type)
+	public void insertIndicator(IndicatorData indicator)
 	{
 		try {
-			String columns[] = {
-					"translationX", "translationY", "translationZ",
-					"rotationAngle", "rotationX", "rotationY", "rotationZ"
-			};
-			//String selectionArgs[] = {sensorId, type};
-			Cursor cur = mDb.query("Indicator", columns, "sensorId = '" + sensorId + "' AND type = '" + type + "'", null, null, null, null);
-			
-			float location[] = new float[7];
-			cur.moveToFirst();
-			location[0] = cur.getFloat(0);
-			location[1] = cur.getFloat(1);
-			location[2] = cur.getFloat(2);
-			location[3] = cur.getFloat(3);
-			location[4] = cur.getFloat(4);
-			location[5] = cur.getFloat(5);
-			location[6] = cur.getFloat(6);
-			
-			cur.close();
-			return location;
-		} catch (Exception e) {
-			// TODO write handle
-			return null;
+			String q = "INSERT INTO Indicator " +
+					"(sensorId, type, translationX, translationY, translationZ, rotationAngle, rotationX, rotationY, rotationZ) " +
+					"VALUES ('" +
+					indicator.getSensorId() + "', '" +
+					indicator.getType() + "', '" +
+					indicator.getTranslationX() + "', '" +
+					indicator.getTranslationY() + "', '" +
+					indicator.getTranslationZ() + "', '" +
+					indicator.getRotationAngle() + "', '" +
+					indicator.getRotationX() + "', '" +
+					indicator.getRotationY() + "', '" +
+					indicator.getRotationZ() + "');";
+			mDb.execSQL(q);
+		} catch (SQLException e) {
+			// TODO: write handler
+			return;
 		}
+	}
+	
+	public void insertMeasurement(Measurement measurement)
+	{
+		// If this is not the most recent record, ignore
+		boolean isNewest = isNewest(measurement);
+		if (!isNewest) return;
+		
+		// If it is the most recent record, delete all the older ones from the database
+		mDb.execSQL("DELETE FROM Measurement WHERE sensorId = '" + measurement.getSensorId() + "';");
+		
+		String q = "INSERT INTO Measurement (sensorId, temperature, light, movement, time) VALUES ('" +
+		measurement.getSensorId() + "', '" +
+		measurement.getTemperature() + "', '" +
+		measurement.getLight() + "', '" +
+		measurement.getMovement() + "', '" +
+		measurement.getTime() + "');";
+		
+		mDb.execSQL(q);
+		return;
 	}
 	
 	private boolean isNewest(Measurement measurement)
@@ -253,16 +265,4 @@ public class DBWorker {
 	{
 		return mDb.rawQuery(query, null);
 	}
-	
-	public boolean close()
-	{
-		try {
-			mDb.close();
-			return true;
-		} catch (Exception e) {
-			return false;
-		}
-	}
-	
-	private static SQLiteDatabase mDb;
 }

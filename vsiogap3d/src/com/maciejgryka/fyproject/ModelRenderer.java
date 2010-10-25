@@ -23,9 +23,6 @@ package com.maciejgryka.fyproject;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.nio.FloatBuffer;
 
 import javax.microedition.khronos.egl.EGL10;
 import javax.microedition.khronos.opengles.GL10;
@@ -39,12 +36,99 @@ import android.opengl.GLUtils;
  * Render a building model with all the indicators.
  */
 public class ModelRenderer implements GLSurfaceView.Renderer {
+    private Context mContext;
+
+    private Model mModel;
+
+//    private Indicators mIndicators;
+//    private int[] mTextureNames;
+
+    private int zoom = 0;
+    
+//    public FloatBuffer getFloatBuffer(float[] array)
+//    {
+//    	FloatBuffer floatBuffer;
+//    	ByteBuffer cbb = ByteBuffer.allocateDirect(array.length*4);
+//		cbb.order(ByteOrder.nativeOrder());
+//		floatBuffer = cbb.asFloatBuffer();
+//		floatBuffer.put(array);
+//		floatBuffer.position(0);
+//		
+//		return floatBuffer;
+//    }
+    
+    private float panX = 0.0f;
+    
+    private float panY = 0.0f;
+    
+    private float distance = 4;
+    
+    private float elevation = 45;
+    
+    private float rotation = 90;
+    
     public ModelRenderer(Context context) {
     	mContext = context;
         mModel = new Model(mContext);
-        mIndicators = new Indicators();
+//        mIndicators = new Indicators();
     }
-
+    
+    private void bind(GL10 gl, int type, int id)
+    {
+//    	gl.glBindTexture(GL10.GL_TEXTURE_2D, type);
+//    	
+//    	gl.glTexEnvx(GL10.GL_TEXTURE_ENV, GL10.GL_TEXTURE_ENV_MODE, GL10.GL_MODULATE);
+//        gl.glTexParameterx(GL10.GL_TEXTURE_2D, GL10.GL_TEXTURE_MAG_FILTER, GL10.GL_NEAREST);
+//        gl.glTexParameterx(GL10.GL_TEXTURE_2D, GL10.GL_TEXTURE_MIN_FILTER, GL10.GL_NEAREST);
+//        gl.glTexParameterx(GL10.GL_TEXTURE_2D, GL10.GL_TEXTURE_WRAP_S, GL10.GL_REPEAT);
+//        gl.glTexParameterx(GL10.GL_TEXTURE_2D, GL10.GL_TEXTURE_WRAP_T, GL10.GL_REPEAT);
+//        
+//        InputStream is = mContext.getResources().openRawResource(id);
+//		Bitmap bitmap = BitmapFactory.decodeStream(is);
+//        GLUtils.texImage2D(GL10.GL_TEXTURE_2D, 0, bitmap, 0);
+//        bitmap.recycle();
+//        
+//        try {
+//        	is.close();
+//        } catch (IOException e) {
+//        	// Ignore
+//        }
+    	return;
+    }
+    
+    private void bindTextures(GL10 gl)
+    {
+//    	mTextureNames = new int[3];
+//		gl.glGenTextures(3, mTextureNames, 0);
+//		
+//		bind(gl, mTextureNames[0], R.drawable.thermometer);
+//		bind(gl, mTextureNames[1], R.drawable.lightbulb);
+//        bind(gl, mTextureNames[2], R.drawable.occupied);
+    	return;
+    }
+    
+    public void changeDistance(float distance) {
+    	if (this.distance + distance >= 0 && this.distance + distance <= 9) {
+        	this.distance += distance;	
+    	}
+    }
+    
+    public void changeElevation(float elevation) {
+    	if (this.elevation + elevation >= 0 && this.elevation + elevation <= 90) {
+    		this.elevation += elevation;
+    	}
+	}
+	
+    public void changePanX(float panX) {
+    	this.panX += panX;
+    }
+    public void changePanY(float panY) {
+    	this.panY += panY;
+    }
+    public void changeRotation(float rotation) {
+    	this.rotation += rotation;
+    }
+    
     public void drawFrame(GL10 gl) {
         gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
         gl.glClearColor(0.25f, 0.25f, 0.25f, 1.0f);
@@ -60,10 +144,9 @@ public class ModelRenderer implements GLSurfaceView.Renderer {
         polarView(gl, panX, panY, distance, elevation, rotation);
 //        gl.glScalef(1.1f, 1.1f, 1.1f);
 
-        mIndicators.draw(gl);
+        //mIndicators.draw(gl);
         mModel.draw(gl);
     }
-
     public int[] getConfigSpec() { 
 		/*
 		 *  We want a depth buffer, don't care about the
@@ -75,7 +158,17 @@ public class ModelRenderer implements GLSurfaceView.Renderer {
 		};
 		return configSpec;
     }
-
+    private void polarView(GL10 gl, float panX, float panY, float distance, float elevation, float rotation) {
+		gl.glTranslatef(panX, 0, 0);
+		gl.glTranslatef(0, panY, 0);
+    	gl.glTranslatef(0.0f, 0.0f, -distance);
+		gl.glRotatef(elevation, 1.0f, 0.0f, 0.0f);
+		gl.glRotatef(rotation, 0.0f, 1.0f, 0.0f);
+	}
+    public void setZoom(int zoom)
+    {
+    	this.zoom = zoom;
+    }
     public void sizeChanged(GL10 gl, int width, int height) {
          gl.glViewport(0, 0, width, height);
 
@@ -90,7 +183,6 @@ public class ModelRenderer implements GLSurfaceView.Renderer {
          gl.glLoadIdentity();
          gl.glFrustumf(-ratio, ratio, -1, 1, 1, 10);
     }
-
     public void surfaceCreated(GL10 gl) {
         
     	gl.glDisable(GL10.GL_DITHER);
@@ -135,100 +227,6 @@ public class ModelRenderer implements GLSurfaceView.Renderer {
     	
     	gl.glClearColor(0,0,0,0);
     	bindTextures(gl);
-    	mIndicators.populateIndicatorIcons(mContext, mTextureNames);
+//    	mIndicators.populateIndicatorIcons(mContext, mTextureNames);
     }
-    
-//    public FloatBuffer getFloatBuffer(float[] array)
-//    {
-//    	FloatBuffer floatBuffer;
-//    	ByteBuffer cbb = ByteBuffer.allocateDirect(array.length*4);
-//		cbb.order(ByteOrder.nativeOrder());
-//		floatBuffer = cbb.asFloatBuffer();
-//		floatBuffer.put(array);
-//		floatBuffer.position(0);
-//		
-//		return floatBuffer;
-//    }
-    
-    private void bindTextures(GL10 gl)
-    {
-    	mTextureNames = new int[3];
-		gl.glGenTextures(3, mTextureNames, 0);
-		
-		bind(gl, mTextureNames[0], R.drawable.thermometer);
-		bind(gl, mTextureNames[1], R.drawable.lightbulb);
-        bind(gl, mTextureNames[2], R.drawable.occupied);
-    }
-    
-    private void bind(GL10 gl, int type, int id)
-    {
-    	gl.glBindTexture(GL10.GL_TEXTURE_2D, type);
-    	
-    	gl.glTexEnvx(GL10.GL_TEXTURE_ENV, GL10.GL_TEXTURE_ENV_MODE, GL10.GL_MODULATE);
-        gl.glTexParameterx(GL10.GL_TEXTURE_2D, GL10.GL_TEXTURE_MAG_FILTER, GL10.GL_NEAREST);
-        gl.glTexParameterx(GL10.GL_TEXTURE_2D, GL10.GL_TEXTURE_MIN_FILTER, GL10.GL_NEAREST);
-        gl.glTexParameterx(GL10.GL_TEXTURE_2D, GL10.GL_TEXTURE_WRAP_S, GL10.GL_REPEAT);
-        gl.glTexParameterx(GL10.GL_TEXTURE_2D, GL10.GL_TEXTURE_WRAP_T, GL10.GL_REPEAT);
-        
-        InputStream is = mContext.getResources().openRawResource(id);
-		Bitmap bitmap = BitmapFactory.decodeStream(is);
-        GLUtils.texImage2D(GL10.GL_TEXTURE_2D, 0, bitmap, 0);
-        bitmap.recycle();
-        
-        try {
-        	is.close();
-        } catch (IOException e) {
-        	// Ignore
-        }
-    }
-    
-    private void polarView(GL10 gl, float panX, float panY, float distance, float elevation, float rotation) {
-		gl.glTranslatef(panX, 0, 0);
-		gl.glTranslatef(0, panY, 0);
-    	gl.glTranslatef(0.0f, 0.0f, -distance);
-		gl.glRotatef(elevation, 1.0f, 0.0f, 0.0f);
-		gl.glRotatef(rotation, 0.0f, 1.0f, 0.0f);
-	}
-    
-    public void changeElevation(float elevation) {
-    	if (this.elevation + elevation >= 0 && this.elevation + elevation <= 90) {
-    		this.elevation += elevation;
-    	}
-	}
-    
-    public void changeRotation(float rotation) {
-    	this.rotation += rotation;
-    }
-    
-    public void changeDistance(float distance) {
-    	if (this.distance + distance >= 0 && this.distance + distance <= 9) {
-        	this.distance += distance;	
-    	}
-    }
-    
-    public void changePanX(float panX) {
-    	this.panX += panX;
-    }
-    
-    public void changePanY(float panY) {
-    	this.panY += panY;
-    }
-    
-    public void setZoom(int zoom)
-    {
-    	this.zoom = zoom;
-    }
-    
-    private Context mContext;
-	
-    private Model mModel;
-    private Indicators mIndicators;
-    private int[] mTextureNames;
-    
-    private int zoom = 0;
-    private float panX = 0.0f;
-    private float panY = 0.0f;
-    private float distance = 4;
-    private float elevation = 45;
-    private float rotation = 90;
 }

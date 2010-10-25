@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 public class LoadingScreen extends Activity {
 	
+	Context mContext;
+	
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +30,4 @@ public class LoadingScreen extends Activity {
         Thread t1 = new Thread(new SleepClass());
         t1.start();
     }
-	
-	Context mContext;
 }

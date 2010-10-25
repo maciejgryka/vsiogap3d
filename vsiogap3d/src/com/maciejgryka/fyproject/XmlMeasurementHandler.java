@@ -21,20 +21,8 @@ public class XmlMeasurementHandler extends DefaultHandler {
 	Measurement currentMeasurement;
 	String currentTag = "";
  
-    public void startElement(String uri, String name, String qName, Attributes atts) {
-    	currentTag = name.trim();
-        if (name.trim().equals("measurement")) {
-        	currentMeasurement.clear();
-        }
-    }
- 
-    public void endElement(String uri, String name, String qName) throws SAXException {
-        if (name.trim().equals("measurement")) {
-        	mDbWorker.insertMeasurement(currentMeasurement);
-        }
-    }
- 
-    public void characters(char ch[], int start, int length) {
+    @Override
+	public void characters(char ch[], int start, int length) {
     	String characters = (new String(ch).substring(start, start + length).trim());
     	
     	if (characters.equals("\n") || characters.equals("")) return;
@@ -50,6 +38,13 @@ public class XmlMeasurementHandler extends DefaultHandler {
 		} else if (currentTag.equals("time")) {
 			currentMeasurement.setTime(characters);
 		}
+    }
+ 
+    @Override
+	public void endElement(String uri, String name, String qName) throws SAXException {
+        if (name.trim().equals("measurement")) {
+        	mDbWorker.insertMeasurement(currentMeasurement);
+        }
     }
  
     public void getMeasurements(URL url, DBWorker dbw) {
@@ -69,6 +64,14 @@ public class XmlMeasurementHandler extends DefaultHandler {
             Log.e("vsiogap3d - XmlMeasurementHandler", e.toString());
         } catch (ParserConfigurationException e) {
             Log.e("vsiogap3d - XmlMeasurementHandler", e.toString());
+        }
+    }
+ 
+    @Override
+	public void startElement(String uri, String name, String qName, Attributes atts) {
+    	currentTag = name.trim();
+        if (name.trim().equals("measurement")) {
+        	currentMeasurement.clear();
         }
     }
 }

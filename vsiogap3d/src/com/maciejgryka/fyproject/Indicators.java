@@ -8,12 +8,37 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 public class Indicators {
+	private static ArrayList<IndicatorIcon> mIndicatorIcons;
+	
+	public static int[] mTextureNames;	
+	
 	public Indicators()
 	{
 		mIndicatorIcons = new ArrayList<IndicatorIcon>();
 //		indicatorDataList = new ArrayList<IndicatorData>();
 	}
+
+	public void addIndicatorIcon(int type, int value, float translation[], float rotation[])
+	{
+		IndicatorIcon indIcon = new IndicatorIcon(type, value, translation, rotation);
+		mIndicatorIcons.add(indIcon);
+	}
 	
+	public void draw(GL10 gl)
+	{
+		for (IndicatorIcon indIcon: mIndicatorIcons) {
+			indIcon.draw(gl);
+		}
+	}
+	
+	public boolean isEmpty()
+	{
+		if (mIndicatorIcons.isEmpty()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 	public void populateIndicatorIcons(Context context, int textureNames[])
 	{
 		if (!mIndicatorIcons.isEmpty()) return;
@@ -90,30 +115,5 @@ public class Indicators {
 				}
 			}
 		}
-	}	
-	
-	public void addIndicatorIcon(int type, int value, float translation[], float rotation[])
-	{
-		IndicatorIcon indIcon = new IndicatorIcon(type, value, translation, rotation);
-		mIndicatorIcons.add(indIcon);
 	}
-
-	public void draw(GL10 gl)
-	{
-		for (IndicatorIcon indIcon: mIndicatorIcons) {
-			indIcon.draw(gl);
-		}
-	}
-	
-	public boolean isEmpty()
-	{
-		if (mIndicatorIcons.isEmpty()) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-	
-	private static ArrayList<IndicatorIcon> mIndicatorIcons;
-	public static int[] mTextureNames;
 }

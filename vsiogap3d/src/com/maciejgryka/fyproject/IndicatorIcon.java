@@ -9,7 +9,20 @@ import java.nio.ShortBuffer;
 import javax.microedition.khronos.opengles.GL10;
 
 class IndicatorIcon {
-	/**
+	private final static int VERTS = 4;
+
+    private IntBuffer mVertexBuffer;
+    
+    private IntBuffer mTexBuffer;
+    
+    private ShortBuffer mIndexBuffer;
+
+    private FloatBuffer mColorBuffer;
+    private int mType;
+    private float[] mTranslation;
+    private float[] mRotation;
+
+    /**
 	 * Creates an IndicatorIcon - textured 2D rectangle.
 	 * @param type determines the texture (0 - temperature, 1 - light, 2 - occupancy)
 	 * @param translation - position of the indicator (preferably somewhere on the wall)
@@ -86,7 +99,6 @@ class IndicatorIcon {
         mTexBuffer.put(one);
         mTexBuffer.position(0);
     }
-
     public void draw(GL10 gl) {
     	gl.glTranslatef(mTranslation[0], mTranslation[1], mTranslation[2]);
     	gl.glRotatef(mRotation[0], mRotation[1], mRotation[2], mRotation[3]);
@@ -108,7 +120,6 @@ class IndicatorIcon {
     	gl.glRotatef(-mRotation[0], mRotation[1], mRotation[2], mRotation[3]);
     	gl.glTranslatef(-mTranslation[0], -mTranslation[1], -mTranslation[2]);
     }
-    
     private float[] getColor(int type, int value)
     {
     	float color[] = new float[4];
@@ -149,15 +160,4 @@ class IndicatorIcon {
     	}
     	return color;
     }
-    
-    private final static int VERTS = 4;
-
-    private IntBuffer mVertexBuffer;
-    private IntBuffer mTexBuffer;
-    private ShortBuffer mIndexBuffer;
-    private FloatBuffer mColorBuffer;
-
-    private int mType;
-    private float[] mTranslation;
-    private float[] mRotation;
 }

@@ -29,21 +29,13 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
-import android.widget.TextView;
 
 public class Vsiogap3d extends Activity {
 	
 	private static final int DIALOG_ERROR = 1;
 	private static final int DIALOG_LOADING = 2;
 	
-	@Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        
-        mGLSurfaceView = new GLSurfaceView(this);
-        mGLSurfaceView.setRenderer(new ModelRenderer(this));
-        setContentView(mGLSurfaceView);
-    }
+	private String currentError = "";
 	
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
@@ -63,62 +55,16 @@ public class Vsiogap3d extends Activity {
 //		return false;
 //	}
 
-	/* (non-Javadoc)
-	 * @see android.app.Activity#onPrepareOptionsMenu(android.view.Menu)
-	 */
-	@Override
-	public boolean onPrepareOptionsMenu(Menu menu) {
-		// TODO: this is slow - remove one item instead of clearing the whole menu
-		menu.clear();
-		menu.add(R.string.menuRefreshData);
-		
-		if (mGLSurfaceView.getZoom() == -1) {
-			menu.add(R.string.menuZoomOut);
-			menu.add(R.string.preferences);
-			return true;
-		} else if (mGLSurfaceView.getZoom() == 1) {
-			menu.add(R.string.menuZoomIn);
-			menu.add(R.string.preferences);
-			return true;
-		}
-		
-		return false;
-	}
+	private GLSurfaceView mGLSurfaceView;
 
-	/* (non-Javadoc)
-	 * @see android.app.Activity#onOptionsItemSelected(android.view.MenuItem)
-	 */
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		try {
-			// TODO: this is slow - would be faster to use item ids not titles
-			String title = item.getTitle().toString();
-			if (title.equals("Zoom In")) {
-				mGLSurfaceView.setZoom(-1);
-				return true;
-			} else if (title.equals("Zoom Out")) {
-				mGLSurfaceView.setZoom(1);
-				return true;
-			} else if (title.equals("Refresh Data")) {
-				mGLSurfaceView = new GLSurfaceView(this);
-				ModelRenderer modelRenderer = new ModelRenderer(this);
-		        mGLSurfaceView.setRenderer(modelRenderer);
-		        setContentView(mGLSurfaceView);
-				return true;
-			} else if (title.equals("Preferences")) {
-				startActivity(new Intent(this, Preferences.class));
-				return true;
-			}
-			return false;
-		} catch (Exception e) {
-			currentError = e.getMessage();
-			showDialog(DIALOG_ERROR);
-			return false;
-		} 
-//		catch (Exception e) {
-//			return false;
-//		}
-	}
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        
+        mGLSurfaceView = new GLSurfaceView(this);
+        mGLSurfaceView.setRenderer(new ModelRenderer(this));
+        setContentView(mGLSurfaceView);
+    }
 		
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onCreateDialog(int)
@@ -141,6 +87,42 @@ public class Vsiogap3d extends Activity {
 		return super.onCreateDialog(id);
 	}
 
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onOptionsItemSelected(android.view.MenuItem)
+	 */
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		try {
+			// TODO: this is slow - would be faster to use item ids not titles
+			String title = item.getTitle().toString();
+			if (title.equals("Zoom In")) {
+				mGLSurfaceView.setZoom(-1);
+				return true;
+			} else if (title.equals("Zoom Out")) {
+				mGLSurfaceView.setZoom(1);
+				return true;
+			} 
+//			else if (title.equals("Refresh Data")) {
+//				mGLSurfaceView = new GLSurfaceView(this);
+//				ModelRenderer modelRenderer = new ModelRenderer(this);
+//		        mGLSurfaceView.setRenderer(modelRenderer);
+//		        setContentView(mGLSurfaceView);
+//				return true;
+//			} else if (title.equals("Preferences")) {
+//				startActivity(new Intent(this, Preferences.class));
+//				return true;
+//			}
+			return false;
+		} catch (Exception e) {
+			currentError = e.getMessage();
+			showDialog(DIALOG_ERROR);
+			return false;
+		} 
+//		catch (Exception e) {
+//			return false;
+//		}
+	}
+
 	@Override
     protected void onPause() {
         // Ideally a game should implement onResume() and onPause()
@@ -148,7 +130,28 @@ public class Vsiogap3d extends Activity {
         super.onPause();
         mGLSurfaceView.onPause();
     }
-
+	
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onPrepareOptionsMenu(android.view.Menu)
+	 */
+	@Override
+	public boolean onPrepareOptionsMenu(Menu menu) {
+		// TODO: this is slow - remove one item instead of clearing the whole menu
+		menu.clear();
+//		menu.add(R.string.menuRefreshData);
+//		menu.add(R.string.preferences);
+		
+		if (mGLSurfaceView.getZoom() == -1) {
+			menu.add(R.string.menuZoomOut);
+			return true;
+		} else if (mGLSurfaceView.getZoom() == 1) {
+			menu.add(R.string.menuZoomIn);
+			return true;
+		}
+		
+		return false;
+	}
+	
 	@Override
     protected void onResume() {
         // Ideally a game should implement onResume() and onPause()
@@ -156,17 +159,13 @@ public class Vsiogap3d extends Activity {
         super.onResume();
         mGLSurfaceView.onResume();
     }
-	
+
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
 		return mGLSurfaceView.onTouchEvent(event);
 	}
-	
 	@Override
 	public boolean onTrackballEvent(MotionEvent event) {
 		return mGLSurfaceView.onTrackballEvent(event);
 	}
-
-	private String currentError = "";
-	private GLSurfaceView mGLSurfaceView;
 }

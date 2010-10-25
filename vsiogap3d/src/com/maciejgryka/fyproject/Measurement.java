@@ -12,35 +12,16 @@ package com.maciejgryka.fyproject;
 // TODO: change datatypes from String to more efficient ones (ints)
 public class Measurement {
 	
+	private int sensorId;
+	
+	private int temperature;
+	private int light;
+	private int movement;
+	private String time;
 	public void clear()
 	{	
 		sensorId = temperature = light = movement = 0;
 		time = null;
-	}
-	
-	/**
-	 * @return the sensorId
-	 */
-	public int getSensorId() {
-		return sensorId;
-	}
-	/**
-	 * @param sensorId the sensorId to set
-	 */
-	public void setSensorId(int sensorId) {
-		this.sensorId = sensorId;
-	}
-	/**
-	 * @return the temperature
-	 */
-	public int getTemperature() {
-		return temperature;
-	}
-	/**
-	 * @param temperature the temperature to set
-	 */
-	public void setTemperature(int temperature) {
-		this.temperature = temperature;
 	}
 	/**
 	 * @return the light
@@ -49,16 +30,35 @@ public class Measurement {
 		return light;
 	}
 	/**
-	 * @param light the light to set
-	 */
-	public void setLight(int light) {
-		this.light = light;
-	}
-	/**
 	 * @return the movement
 	 */
 	public int getMovement() {
 		return movement;
+	}
+	/**
+	 * @return the sensorId
+	 */
+	public int getSensorId() {
+		return sensorId;
+	}
+	/**
+	 * @return the temperature
+	 */
+	public int getTemperature() {
+		return temperature;
+	}
+	/**
+	 * @return the time
+	 */
+	public String getTime() {
+		return time;
+	}
+
+	/**
+	 * @param light the light to set
+	 */
+	public void setLight(int light) {
+		this.light = light;
 	}
 	/**
 	 * @param movement the movement to set
@@ -67,10 +67,16 @@ public class Measurement {
 		this.movement = movement;
 	}
 	/**
-	 * @return the time
+	 * @param sensorId the sensorId to set
 	 */
-	public String getTime() {
-		return time;
+	public void setSensorId(int sensorId) {
+		this.sensorId = sensorId;
+	}
+	/**
+	 * @param temperature the temperature to set
+	 */
+	public void setTemperature(int temperature) {
+		this.temperature = temperature;
 	}
 	/**
 	 * @param time the time to set
@@ -78,10 +84,4 @@ public class Measurement {
 	public void setTime(String time) {
 		this.time = time;
 	}
-
-	private int sensorId;
-	private int temperature;
-	private int light;
-	private int movement;
-	private String time;
 }

@@ -23,7 +23,6 @@ package com.maciejgryka.fyproject;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
-import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 import java.nio.ShortBuffer;
 
@@ -33,6 +32,10 @@ import android.content.Context;
 
 class Model
 {
+    private IntBuffer   mVertexBuffer;
+
+    private ShortBuffer	mIndexBuffer;
+
     public Model(Context context)
     {        
     	int vertices[] = context.getResources().getIntArray(R.array.vertices);
@@ -66,7 +69,6 @@ class Model
         mIndexBuffer.put(indices);
         mIndexBuffer.position(0);
     }
-
     public void draw(GL10 gl)
     {	
     	gl.glTranslatef(0.4f, -0.5f, 4.5f);
@@ -80,7 +82,4 @@ class Model
         gl.glDrawElements(GL10.GL_TRIANGLES, 212*6, GL10.GL_UNSIGNED_SHORT, mIndexBuffer);
         gl.glScalef(0.5f, 0.5f, 0.5f);
     }
-
-    private IntBuffer   mVertexBuffer;
-    private ShortBuffer	mIndexBuffer;
 }
